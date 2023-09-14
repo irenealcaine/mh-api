@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [monsters, setMonsters] = useState([]);
+
+  useEffect(() => {
+    fetch('https://mhw-db.com/monsters')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setMonsters(data);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {monsters.map((monster) => (
+        <div key={monster.id} className="card">
+
+          <p>{monster.name}</p>
+          <p>{monster.type}{" "}{monster.species}</p>
+          <p>{monster.description}</p>
+          {monster.elements && monster.elements}
+          {monster.resistances && monster.resistances.map((resistance) => (
+            <p>Resistance: {resistance.element}</p>
+          ))}
+          {console.log(monster.weaknesses)}
+          {monster.weaknesses && monster.weaknesses.map((weakness) => (
+            <p>Weakness: {weakness.element}</p>
+          ))}
+          {monster.locations.map((location) => (
+            <p>Location: {location.name}</p>
+          ))}
+
+        </div>
+      ))}
     </div>
   );
 }
