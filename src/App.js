@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { images } from "./assets/icons";
-import { Aptonoth } from "./assets/icons";
 
 function App() {
   const [monsters, setMonsters] = useState([]);
@@ -16,14 +15,10 @@ function App() {
 
   return (
     <div className="App">
-      {monsters.slice(0, 5).map((monster) => (
+      {monsters.slice(0, 50).map((monster) => (
         <div key={monster.id} className="card">
-          <img
-            // src={`./assets/${monster.id}.png`}
-            src={monster.name}
-            alt={monster.name}
-          />
-          {console.log(images[monster.id - 1].src)}
+          {console.log(monster.id)}
+          <img src={require(`./assets/${monster.id}.png`)} alt={monster.name} />
           <h2>{monster.name}</h2>
           <p>
             {monster.type} {monster.species}
