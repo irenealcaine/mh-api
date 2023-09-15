@@ -1,38 +1,61 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+import "./App.css";
+import { useState, useEffect } from "react";
+import { images } from "./assets/icons";
+import { Aptonoth } from "./assets/icons";
 
 function App() {
   const [monsters, setMonsters] = useState([]);
 
   useEffect(() => {
-    fetch('https://mhw-db.com/monsters')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
+    fetch("https://mhw-db.com/monsters")
+      .then((response) => response.json())
+      .then((data) => {
         setMonsters(data);
       });
   }, []);
 
   return (
     <div className="App">
-      {monsters.map((monster) => (
+      {monsters.slice(0, 5).map((monster) => (
         <div key={monster.id} className="card">
-
-          <p>{monster.name}</p>
-          <p>{monster.type}{" "}{monster.species}</p>
+          <img
+            // src={`./assets/${monster.id}.png`}
+            src={monster.name}
+            alt={monster.name}
+          />
+          {console.log(images[monster.id - 1].src)}
+          <h2>{monster.name}</h2>
+          <p>
+            {monster.type} {monster.species}
+          </p>
           <p>{monster.description}</p>
-          {monster.elements && monster.elements}
-          {monster.resistances && monster.resistances.map((resistance) => (
-            <p>Resistance: {resistance.element}</p>
-          ))}
-          {console.log(monster.weaknesses)}
-          {monster.weaknesses && monster.weaknesses.map((weakness) => (
-            <p>Weakness: {weakness.element}</p>
-          ))}
-          {monster.locations.map((location) => (
-            <p>Location: {location.name}</p>
-          ))}
+          {monster.elements.length >= 1 && "Element: " + monster.elements}
+          {monster.resistances.length >= 1 && (
+            <p>
+              Resistances:
+              {monster.resistances.map((resistance) => (
+                <span> {resistance.element}</span>
+              ))}
+            </p>
+          )}
 
+          {monster.weaknesses && (
+            <p>
+              Weakness:
+              {monster.weaknesses.map((weakness) => (
+                <span> {weakness.element}</span>
+              ))}
+            </p>
+          )}
+
+          {monster.locations && (
+            <p>
+              Locations:
+              {monster.locations.map((location) => (
+                <span> {location.name}</span>
+              ))}
+            </p>
+          )}
         </div>
       ))}
     </div>
