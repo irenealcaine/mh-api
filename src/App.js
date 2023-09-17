@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { images } from "./assets/icons";
 
 function App() {
   const [monsters, setMonsters] = useState([]);
@@ -15,44 +14,90 @@ function App() {
 
   return (
     <div className="App">
-      {monsters.slice(0, 50).map((monster) => (
-        <div key={monster.id} className="card">
-          {console.log(monster.id)}
-          <img src={require(`./assets/${monster.id}.png`)} alt={monster.name} />
-          <h2>{monster.name}</h2>
-          <p>
-            {monster.type} {monster.species}
-          </p>
-          <p>{monster.description}</p>
-          {monster.elements.length >= 1 && "Element: " + monster.elements}
-          {monster.resistances.length >= 1 && (
-            <p>
-              Resistances:
-              {monster.resistances.map((resistance) => (
-                <span> {resistance.element}</span>
-              ))}
-            </p>
-          )}
+      <h1>Larges</h1>
+      {monsters
+        .filter((monster) => monster.type === "large")
+        .map((monster) => (
+          <div key={monster.id} className="card">
 
-          {monster.weaknesses && (
+            <img src={require(`./assets/images/monsters/${monster.id}.png`)} alt={monster.name} />
+            <h2>{monster.name}</h2>
             <p>
-              Weakness:
-              {monster.weaknesses.map((weakness) => (
-                <span> {weakness.element}</span>
-              ))}
+              {monster.species}
             </p>
-          )}
+            <p>{monster.description}</p>
+            {monster.elements.length >= 1 && "Element: " + monster.elements}
+            {monster.resistances.length >= 1 && (
+              <p>
+                Resistances:
+                {monster.resistances.map((resistance, index) => (
+                  <span key={index}> {resistance.element}</span>
+                ))}
+              </p>
+            )}
 
-          {monster.locations && (
+            {monster.weaknesses && (
+              <p>
+                Weakness:
+                {monster.weaknesses.map((weakness, index) => (
+                  <span key={index}> {weakness.element}</span>
+                ))}
+              </p>
+            )}
+
+            {monster.locations && (
+              <p>
+                Locations:
+                {monster.locations.map((location, index) => (
+                  <span key={index}> {location.name}</span>
+                ))}
+              </p>
+            )}
+          </div>
+        ))}
+
+      <h1>Smalls</h1>
+      {monsters
+        .slice(0, 50)
+        .filter((monster) => monster.type === "small")
+        .map((monster) => (
+          <div key={monster.id} className="card">
+
+            <img src={require(`./assets/${monster.id}.png`)} alt={monster.name} />
+            <h2>{monster.name}</h2>
             <p>
-              Locations:
-              {monster.locations.map((location) => (
-                <span> {location.name}</span>
-              ))}
+              {monster.species}
             </p>
-          )}
-        </div>
-      ))}
+            <p>{monster.description}</p>
+            {monster.elements.length >= 1 && "Element: " + monster.elements}
+            {monster.resistances.length >= 1 && (
+              <p>
+                Resistances:
+                {monster.resistances.map((resistance, index) => (
+                  <span key={index}> {resistance.element}</span>
+                ))}
+              </p>
+            )}
+
+            {monster.weaknesses && (
+              <p>
+                Weakness:
+                {monster.weaknesses.map((weakness, index) => (
+                  <span key={index}> {weakness.element}</span>
+                ))}
+              </p>
+            )}
+
+            {monster.locations && (
+              <p>
+                Locations:
+                {monster.locations.map((location, index) => (
+                  <span key={index}> {location.name}</span>
+                ))}
+              </p>
+            )}
+          </div>
+        ))}
     </div>
   );
 }
