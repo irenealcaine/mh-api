@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
+  const [monsterImg, setMonsterImg] = useState("");
 
   const { id } = useParams();
 
@@ -11,15 +12,26 @@ const MonsterPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setMonster(data);
+        setMonsterImg(`../../assets/images/monsters/${monster.id}.png`);
       });
-  }, []);
+  }, [id]);
+
+  const renderMonsterImage = () => {
+    return monsterImg ? (
+      <img
+        src={require(`../../assets/images/monsters/${monster.id}.png`)}
+        alt={monster.name}
+      />
+    ) : null;
+  };
 
   return (
     <div>
       <h1>{monster.name}</h1>
+      {renderMonsterImage()}
       <p>{monster.description}</p>
-      {monster.elements.length >= 1 && "Element: " + monster.elements}
-      {monster.resistances.length >= 1 && (
+      {monster.elements && "Element: " + monster.elements}
+      {monster.resistances && (
         <p>
           Resistances:
           {monster.resistances.map((resistance, index) => (
