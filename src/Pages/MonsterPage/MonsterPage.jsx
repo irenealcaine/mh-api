@@ -52,19 +52,24 @@ const MonsterPage = () => {
   return (
     <div className="monsterPage">
       <h1>{monster.name}</h1>
+      <p>{monster.species}</p>
       {renderMonsterImage()}
       <p>{monster.description}</p>
-      {console.log(monster.elements)}
-      {monster.elements && (
+      {monster.elements !== undefined && monster.elements.length > 0 && (
         <p>
           Elements:
           {monster.elements.map((element, index) => (
-            <img key={index} src={icons[element]} alt={element} />
+            <img
+              key={index}
+              src={icons[element]}
+              alt={element}
+              className="icon"
+            />
           ))}
         </p>
       )}
 
-      {monster.resistances && (
+      {monster.resistances !== undefined && monster.resistances.length > 0 && (
         <p>
           Resistances:
           {monster.resistances.map((resistance, index) => (
@@ -72,21 +77,69 @@ const MonsterPage = () => {
               key={index}
               src={icons[resistance.element]}
               alt={resistance.element}
+              className="icon"
             />
           ))}
         </p>
       )}
 
-      {monster.weaknesses && (
-        <p>
+      {monster.weaknesses !== undefined && monster.weaknesses.length > 0 && (
+        <div>
           Weakness:
-          {monster.weaknesses.map((weakness, index) => (
-            // <span key={index}> {weakness.element}</span>
-            <img
-              key={index}
-              src={icons[weakness.element]}
-              alt={weakness.element}
-            />
+          {monster.weaknesses
+            .filter((weakness) => weakness.condition === null)
+            .map((weakness, index) => (
+              <div>
+                <img
+                  key={index}
+                  src={icons[weakness.element]}
+                  alt={weakness.element}
+                  className="icon"
+                />
+                <span>{weakness.stars}</span>
+                <span>{weakness.condition}</span>
+              </div>
+            ))}
+          {monster.weaknesses
+            .filter((weakness) => weakness.condition !== null)
+            .slice(0, 1)
+            .map((weakness, index) => (
+              <div>
+                <span>{weakness.condition}</span>
+              </div>
+            ))}
+          {monster.weaknesses
+            .filter((weakness) => weakness.condition !== null)
+            .map((weakness, index) => (
+              <div>
+                <img
+                  key={index}
+                  src={icons[weakness.element]}
+                  alt={weakness.element}
+                  className="icon"
+                />
+                <span>{weakness.stars}</span>
+              </div>
+            ))}
+        </div>
+      )}
+
+      <p>
+        Locations:
+        {monster.locations &&
+          monster.locations.map((location, index) => (
+            <span key={index}>{location.name}</span>
+          ))}
+      </p>
+
+      {monster.rewards !== undefined && monster.rewards.length > 0 && (
+        <p>
+          Rewards:
+          {monster.rewards.map((reward, index) => (
+            <span key={index}>
+              {console.log(reward)}
+              {reward.item.name}
+            </span>
           ))}
         </p>
       )}

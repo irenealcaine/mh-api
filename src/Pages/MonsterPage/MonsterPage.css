@@ -1,3 +1,7 @@
 .monsterPage img {
-  width: 50px;
+  width: 150px;
+}
+
+.monsterPage .icon {
+  width: 25px;
 }
