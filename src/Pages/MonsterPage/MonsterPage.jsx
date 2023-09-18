@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./MonsterPage.css";
-import { AiFillFire } from "react-icons/ai";
+import dragonIcon from "../../assets/images/icons/dragon.png";
 import fireIcon from "../../assets/images/icons/fire.png";
+import iceIcon from "../../assets/images/icons/ice.png";
+import thunderIcon from "../../assets/images/icons/thunder.png";
+import waterIcon from "../../assets/images/icons/water.png";
+import blastIcon from "../../assets/images/icons/blast.png";
+import poisonIcon from "../../assets/images/icons/poison.png";
+import sleepIcon from "../../assets/images/icons/sleep.png";
+import paralysisIcon from "../../assets/images/icons/paralysis.png";
+import stunIcon from "../../assets/images/icons/stun.png";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
@@ -28,9 +36,17 @@ const MonsterPage = () => {
     ) : null;
   };
 
-  const resistanceIcons = {
+  const icons = {
+    blast: blastIcon,
     fire: fireIcon,
-    water: "faWater",
+    water: waterIcon,
+    dragon: dragonIcon,
+    thunder: thunderIcon,
+    ice: iceIcon,
+    paralysis: paralysisIcon,
+    poison: poisonIcon,
+    sleep: sleepIcon,
+    stun: stunIcon,
   };
 
   return (
@@ -38,16 +54,25 @@ const MonsterPage = () => {
       <h1>{monster.name}</h1>
       {renderMonsterImage()}
       <p>{monster.description}</p>
-      {monster.elements && "Element: " + monster.elements}
+      {console.log(monster.elements)}
+      {monster.elements && (
+        <p>
+          Elements:
+          {monster.elements.map((element, index) => (
+            <img key={index} src={icons[element]} alt={element} />
+          ))}
+        </p>
+      )}
+
       {monster.resistances && (
         <p>
           Resistances:
           {monster.resistances.map((resistance, index) => (
-            <span key={index}>
-              {/* {resistance.element} */}
-              {/* {resistanceIcons[resistance.element]} */}
-              <img src={resistanceIcons[resistance.element]} />
-            </span>
+            <img
+              key={index}
+              src={icons[resistance.element]}
+              alt={resistance.element}
+            />
           ))}
         </p>
       )}
@@ -56,7 +81,12 @@ const MonsterPage = () => {
         <p>
           Weakness:
           {monster.weaknesses.map((weakness, index) => (
-            <span key={index}> {weakness.element}</span>
+            // <span key={index}> {weakness.element}</span>
+            <img
+              key={index}
+              src={icons[weakness.element]}
+              alt={weakness.element}
+            />
           ))}
         </p>
       )}
