@@ -1,13 +1,19 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import MonsterPage from "./Pages/MonsterPage/MonsterPage";
 import Monsters from "./Pages/Monsters/Monsters";
-
+import Sets from "./Pages/Sets/Sets";
 
 function App() {
-
-
   return (
     <div className="App">
-      <Monsters />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<Monsters />} />
+          <Route path="/sets" exact element={<Sets />} />
+          <Route path="/monsters/:id" element={<MonsterPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
