@@ -89,9 +89,8 @@ const MonsterPage = () => {
           {monster.weaknesses
             .filter((weakness) => weakness.condition === null)
             .map((weakness, index) => (
-              <div>
+              <div key={index}>
                 <img
-                  key={index}
                   src={icons[weakness.element]}
                   alt={weakness.element}
                   className="icon"
@@ -104,16 +103,15 @@ const MonsterPage = () => {
             .filter((weakness) => weakness.condition !== null)
             .slice(0, 1)
             .map((weakness, index) => (
-              <div>
+              <div key={index}>
                 <span>{weakness.condition}</span>
               </div>
             ))}
           {monster.weaknesses
             .filter((weakness) => weakness.condition !== null)
             .map((weakness, index) => (
-              <div>
+              <div key={index}>
                 <img
-                  key={index}
                   src={icons[weakness.element]}
                   alt={weakness.element}
                   className="icon"
@@ -136,10 +134,13 @@ const MonsterPage = () => {
         <p>
           Rewards:
           {monster.rewards.map((reward, index) => (
-            <span key={index}>
+            <div key={index}>
               {console.log(reward)}
               {reward.item.name}
-            </span>
+              Rarity: {reward.item.rarity}
+              Value: {reward.item.value}
+              {reward.item.description}
+            </div>
           ))}
         </p>
       )}
