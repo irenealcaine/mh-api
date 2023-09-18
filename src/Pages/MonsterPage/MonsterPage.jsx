@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./MonsterPage.css";
+import { AiFillFire } from "react-icons/ai";
+import fireIcon from "../../assets/images/icons/fire.png";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
@@ -25,8 +28,13 @@ const MonsterPage = () => {
     ) : null;
   };
 
+  const resistanceIcons = {
+    fire: fireIcon,
+    water: "faWater",
+  };
+
   return (
-    <div>
+    <div className="monsterPage">
       <h1>{monster.name}</h1>
       {renderMonsterImage()}
       <p>{monster.description}</p>
@@ -35,7 +43,11 @@ const MonsterPage = () => {
         <p>
           Resistances:
           {monster.resistances.map((resistance, index) => (
-            <span key={index}> {resistance.element}</span>
+            <span key={index}>
+              {/* {resistance.element} */}
+              {/* {resistanceIcons[resistance.element]} */}
+              <img src={resistanceIcons[resistance.element]} />
+            </span>
           ))}
         </p>
       )}

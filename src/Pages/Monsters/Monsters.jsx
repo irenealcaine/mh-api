@@ -59,7 +59,11 @@ const Monsters = () => {
         .slice(0, 50)
         .filter((monster) => monster.type === "small")
         .map((monster) => (
-          <div key={monster.id} className="card">
+          <Link
+            key={monster.id}
+            className="card"
+            to={`/monsters/${monster.id}`}
+          >
             <img
               src={require(`../../assets/images/monsters/${monster.id}.png`)}
               alt={monster.name}
@@ -75,7 +79,7 @@ const Monsters = () => {
                 ))}
               </p>
             )}
-          </div>
+          </Link>
         ))}
     </div>
   );
