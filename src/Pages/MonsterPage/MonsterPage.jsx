@@ -25,7 +25,7 @@ const MonsterPage = () => {
         setMonster(data);
         setMonsterImg(`../../assets/images/monsters/${monster.id}.png`);
       });
-  }, [id]);
+  }, [id, monster.id]);
 
   const renderMonsterImage = () => {
     return monsterImg ? (
