@@ -1,6 +1,7 @@
 .main {
   min-height: 100vh;
   padding: 30px;
+  background-color: #ecfeff;
 }
 
 .header,
@@ -8,7 +9,7 @@
   position: fixed;
   right: 0;
   left: 0;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 100%;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
