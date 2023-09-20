@@ -16,7 +16,7 @@ const Sets = () => {
   return (
     <div className="sets">
       {sets.slice(0, 10).map((set, index) => (
-        <Link key={index} to={"/sets/1"} className="set">
+        <Link key={index} to={`/sets/${set.id}`} className="set">
           {set.name}
           <div className="pieces">
             {set.pieces &&
