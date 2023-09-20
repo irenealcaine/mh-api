@@ -1,3 +1,4 @@
 .piece {
   border: 1px solid red;
+  width: fit-content;
 }

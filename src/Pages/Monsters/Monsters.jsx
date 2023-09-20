@@ -24,29 +24,29 @@ const Monsters = () => {
           <img
             src={require(`../../assets/images/monsters/${monster.id}.png`)}
             alt={monster.name}
+            className="monsterImg"
           />
-          <h2>{monster.name}</h2>
-          <p>{monster.species}</p>
+          <h2 className="name">{monster.name}</h2>
+          <p className="specie">{monster.species}</p>
 
-          {monster.locations && (
+          {/* {monster.locations && (
             <p>
               Locations:
               {monster.locations.map((location, index) => (
                 <span key={index}> {location.name}</span>
               ))}
             </p>
-          )}
+          )} */}
         </Link>
       ));
   };
 
   return (
-    <div className="monsters">
+    <div>
       <h1>Larges</h1>
-      {renderMonsters("large")}
-
+      <div className="monsters">{renderMonsters("large")}</div>
       <h1>Smalls</h1>
-      {renderMonsters("small")}
+      <div className="monsters">{renderMonsters("small")}</div>
     </div>
   );
 };
