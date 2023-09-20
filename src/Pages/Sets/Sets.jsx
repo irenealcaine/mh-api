@@ -15,19 +15,19 @@ const Sets = () => {
 
   return (
     <div className="sets">
-      <span className="title">
-        {sets.slice(0, 10).map((set, index) => (
-          <Link key={index} to={"/sets/1"}>
-            {set.name}
+      {sets.slice(0, 10).map((set, index) => (
+        <Link key={index} to={`/sets/${set.id}`} className="set">
+          {set.name}
+          <div className="pieces">
             {set.pieces &&
               set.pieces.map((piece, index) => (
                 <div key={index}>
                   <img src={piece.assets.imageFemale} alt={piece.name} />
                 </div>
               ))}
-          </Link>
-        ))}
-      </span>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
