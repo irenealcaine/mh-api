@@ -17,7 +17,7 @@ const SetPage = () => {
   }, [id, set.id]);
 
   return (
-    <div className="header">
+    <div className="">
       <div>{set.name}</div>
       <div>{set.rank}</div>
       <div>
