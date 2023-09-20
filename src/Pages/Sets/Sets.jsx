@@ -5,7 +5,7 @@ import "./Sets.css";
 const Sets = () => {
   const [sets, setSets] = useState([]);
 
-  const itemsPerPage = 20;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -36,32 +36,41 @@ const Sets = () => {
   }
 
   return (
-    <div className="sets">
-      {sets.slice(startIndex, endIndex).map((set, index) => (
-        <Link key={index} to={`/sets/${set.id}`} className="set">
-          {set.id} {set.name}
-          <div className="pieces">
-            {set.pieces &&
-              set.pieces.map((piece, index) => (
-                <div key={index}>
-                  {piece.assets.imageMale && (
-                    <img src={piece.assets.imageMale} alt={piece.name} />
-                  )}
-                </div>
-              ))}
-          </div>
-          {set.bonus ? <p>{set.bonus.name}</p> : <p>Sin bonus</p>}
-        </Link>
-      ))}
-      {currentPage > 1 && <button onClick={previusPage}>Anterior</button>}
-      {pages.map((page, index) => (
-        <div key={index} onClick={() => setCurrentPage(page)}>
-          {page}
+    <div>
+      <div className="sets">
+        {sets.slice(startIndex, endIndex).map((set, index) => (
+          <Link key={index} to={`/sets/${set.id}`} className="set">
+            {/* {set.id}  */}
+            {set.name}
+            <div className="pieces">
+              {set.pieces &&
+                set.pieces.map((piece, index) => (
+                  <div key={index}>
+                    {piece.assets.imageMale && (
+                      <img src={piece.assets.imageMale} alt={piece.name} />
+                    )}
+                  </div>
+                ))}
+            </div>
+            {set.bonus ? <p>Bonus: {set.bonus.name}</p> : <p>Without bonus</p>}
+          </Link>
+        ))}
+      </div>
+      <div className="pagination">
+        {currentPage > 1 && <button onClick={previusPage}>Previus</button>}
+        <div className="pagesNumber">
+          {pages.map((page, index) => (
+            <div
+              className={`pageNumber ${page === currentPage && "selected"}`}
+              key={index}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </div>
+          ))}
         </div>
-      ))}
-      {currentPage < pages.length && (
-        <button onClick={nextPage}>Siguiente</button>
-      )}
+        {currentPage < pages.length && <button onClick={nextPage}>Next</button>}
+      </div>
     </div>
   );
 };
