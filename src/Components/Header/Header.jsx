@@ -10,8 +10,12 @@ const Header = () => {
           <img src={logo} className="logo" alt="logo" />
         </Link>
         <ul>
-          <li>Monsters</li>
-          <li>Sets</li>
+          <Link to={"/monsters"}>
+            <li>Monsters</li>
+          </Link>
+          <Link to={"/sets"}>
+            <li>Sets</li>
+          </Link>
         </ul>
       </nav>
     </div>
