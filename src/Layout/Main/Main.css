@@ -1,0 +1,25 @@
+.main {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.header,
+.footer {
+  position: fixed;
+  right: 0;
+  left: 0;
+  border: 1px solid white;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.header {
+  top: 0;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.footer {
+  bottom: 0;
+  box-shadow: 0 -8px 32px 0 rgba(31, 38, 135, 0.37);
+}

@@ -1,5 +1,6 @@
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
+import "./Main.css";
 
 const Main = ({ children }) => {
   return (

@@ -1,7 +1,16 @@
+import "./Header.css";
+import logo from "../../assets/images/monsters/36.png";
+
 const Header = () => {
   return (
     <div className="header">
-      <span className="title">Header</span>
+      <nav>
+        <img src={logo} className="logo" />
+        <ul>
+          <li>Monsters</li>
+          <li>Sets</li>
+        </ul>
+      </nav>
     </div>
   );
 };
