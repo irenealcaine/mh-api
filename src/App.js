@@ -10,8 +10,8 @@ import Sets from "./Pages/Sets/Sets";
 function App() {
   return (
     <div className="App">
-      <Main>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Main>
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/monsters" exact element={<Monsters />} />
@@ -19,8 +19,8 @@ function App() {
             <Route path="/sets" exact element={<Sets />} />
             <Route path="/sets/:id" exact element={<SetPage />} />
           </Routes>
-        </BrowserRouter>
-      </Main>
+        </Main>
+      </BrowserRouter>
     </div>
   );
 }
