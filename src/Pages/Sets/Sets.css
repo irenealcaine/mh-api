@@ -69,7 +69,6 @@
 }
 
 .selected {
-  /* border: 1px solid red; */
   text-decoration: underline;
   font-weight: 700;
 }
