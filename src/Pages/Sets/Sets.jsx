@@ -53,7 +53,11 @@ const Sets = () => {
                 set.pieces.map((piece, index) => (
                   <div key={index}>
                     {piece.assets.imageMale && (
-                      <img src={piece.assets.imageMale} alt={piece.name} />
+                      <img
+                        className="pieceImg"
+                        src={piece.assets.imageMale}
+                        alt={piece.name}
+                      />
                     )}
                   </div>
                 ))}
