@@ -30,8 +30,9 @@ const Sets = () => {
     fetch("https://mhw-db.com/armor/sets")
       .then((response) => response.json())
       .then((data) => {
-        const first100Sets = data.slice(0, maxItems);
-        setSets(first100Sets);
+        // const first100Sets = data.slice(0, maxItems);
+        // setSets(first100Sets);
+        setSets(data);
       });
   }, []);
 
