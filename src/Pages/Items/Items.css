@@ -1,0 +1,11 @@
+.items {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.item {
+  padding: 5px 10px;
+  background-color: #ffb14398;
+  border-radius: 20px;
+}

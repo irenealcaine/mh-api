@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./SetPage.css";
 
 const SetPage = () => {
@@ -30,19 +30,24 @@ const SetPage = () => {
               {/* <p>{piece.rank}</p>
               <p>{piece.rarity}</p>
               <p>{piece.armorSet}</p> */}
-              <p>
+              <div className="setMaterialItems">
                 {piece.crafting.materials &&
                   piece.crafting.materials.map((material, index) => (
-                    <div key={index}>
+                    <Link
+                      key={index}
+                      className="setMaterialItem"
+                      to={`/items/${material.item.id}`}
+                    >
                       {material.item.name} x {material.quantity}
-                    </div>
+                    </Link>
                   ))}
-              </p>
+              </div>
               <p>
                 {piece.skills &&
                   piece.skills.map((skill, index) => (
-                    <div>
-                      {skill.skillName}: {skill.description}
+                    <div key={index}>
+                      <span className="setSkillName">{skill.skillName}</span>:{" "}
+                      {skill.description}
                     </div>
                   ))}
               </p>

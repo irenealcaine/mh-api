@@ -16,6 +16,24 @@
   width: 200px;
 }
 
+.setSkillName {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.setMaterialItems {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.setMaterialItem {
+  padding: 5px 10px;
+  background-color: #ffb14398;
+  border-radius: 20px;
+  width: fit-content;
+}
+
 @media screen and (max-width: 1000px) {
   .setPieces {
     grid-template-columns: repeat(3, 1fr);

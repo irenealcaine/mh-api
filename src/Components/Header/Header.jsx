@@ -16,6 +16,9 @@ const Header = () => {
           <Link to={"/sets"}>
             <li>Sets</li>
           </Link>
+          <Link to={"/items"}>
+            <li>Items</li>
+          </Link>
         </ul>
       </nav>
     </div>
