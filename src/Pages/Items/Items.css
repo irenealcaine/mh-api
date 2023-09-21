@@ -2,10 +2,18 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .item {
   padding: 5px 10px;
   background-color: #ffb14398;
   border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .items {
+    width: 90%;
+  }
 }

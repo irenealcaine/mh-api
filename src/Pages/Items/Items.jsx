@@ -15,12 +15,15 @@ const Items = () => {
   }, []);
 
   return (
-    <div className="items">
-      {items.map((item, index) => (
-        <Link className="item" to={`/items/${item.id}`} key={index}>
-          {item.name}
-        </Link>
-      ))}
+    <div className="itemsPage">
+      <h1>Items</h1>
+      <div className="items">
+        {items.map((item, index) => (
+          <Link className="item" to={`/items/${item.id}`} key={index}>
+            {item.name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
