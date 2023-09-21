@@ -1,4 +1,39 @@
-.piece {
-  border: 1px solid red;
-  width: fit-content;
+.setPieces {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.setPiece {
+  background: #fff8ee55;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.setPiece img {
+  margin: 10px auto;
+  display: block;
+  width: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .setPieces {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .setPieces {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .setPiece img {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .setPieces {
+    grid-template-columns: 1fr;
+  }
 }

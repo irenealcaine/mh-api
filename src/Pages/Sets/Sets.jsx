@@ -37,11 +37,12 @@ const Sets = () => {
 
   return (
     <div>
+      <h1>Sets</h1>
       <div className="sets">
         {sets.slice(startIndex, endIndex).map((set, index) => (
           <Link key={index} to={`/sets/${set.id}`} className="set">
             {/* {set.id}  */}
-            {set.name}
+            <h2 className="setName">{set.name}</h2>
             <div className="pieces">
               {set.pieces &&
                 set.pieces.map((piece, index) => (

@@ -17,19 +17,19 @@ const SetPage = () => {
   }, [id, set.id]);
 
   return (
-    <div className="">
-      <div>{set.name}</div>
+    <div className="setPage">
+      <h1>{set.name} set</h1>
       <div>{set.rank}</div>
-      <div>
+      <div className="setPieces">
         {set.pieces &&
           set.pieces.map((piece, index) => (
-            <div key={index} className="piece">
-              <p>{piece.name}</p>
+            <div key={index} className="setPiece">
+              <h2>{piece.name}</h2>
               <p>{piece.type}</p>
-              <img src={piece.assets.imageFemale} alt={piece.name} />
-              <p>{piece.rank}</p>
+              <img src={piece.assets.imageMale} alt={piece.name} />
+              {/* <p>{piece.rank}</p>
               <p>{piece.rarity}</p>
-              <p>{piece.armorSet}</p>
+              <p>{piece.armorSet}</p> */}
               <p>
                 {piece.crafting.materials &&
                   piece.crafting.materials.map((material, index) => (

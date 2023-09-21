@@ -7,9 +7,7 @@
 }
 
 .card {
-  /* border: 1px solid red; */
   background: #fff8ee55;
-  /* padding: 20px; */
   border-radius: 15px;
   aspect-ratio: 1/1;
   position: relative;
@@ -42,4 +40,10 @@
 .name,
 .specie {
   transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .monsters {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

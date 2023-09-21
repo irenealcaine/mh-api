@@ -24,6 +24,8 @@ img {
 }
 .pieces {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pagination {
