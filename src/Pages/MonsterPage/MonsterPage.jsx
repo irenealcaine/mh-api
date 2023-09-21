@@ -30,6 +30,7 @@ const MonsterPage = () => {
   const renderMonsterImage = () => {
     return monsterImg ? (
       <img
+        className="monsterImage"
         src={require(`../../assets/images/monsters/${monster.id}.png`)}
         alt={monster.name}
       />

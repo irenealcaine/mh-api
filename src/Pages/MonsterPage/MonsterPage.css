@@ -1,9 +1,10 @@
-.monsterPage img {
-  width: 150px;
+.monsterImage {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
 }
 
-.monsterPage .icon {
-  width: 25px;
+.icon {
+  width: 20px;
 }
-
-
