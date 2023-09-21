@@ -27,7 +27,7 @@ const ItemPage = () => {
         });
         setArmor(filteredArmorData);
       });
-  }, [id, itemData.id]);
+  }, [id, itemData.id, itemData.name]);
 
   return (
     <div className="itemPage">
