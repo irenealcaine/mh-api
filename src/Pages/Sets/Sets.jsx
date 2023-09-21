@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Sets.css";
+import fire from "../../assets/images/icons/fire.png";
+import water from "../../assets/images/icons/water.png";
+import ice from "../../assets/images/icons/ice.png";
+import thunder from "../../assets/images/icons/thunder.png";
+import dragon from "../../assets/images/icons/dragon.png";
 
 const Sets = () => {
   const [sets, setSets] = useState([]);
@@ -37,11 +42,12 @@ const Sets = () => {
 
   return (
     <div>
+      <h1>Sets</h1>
       <div className="sets">
         {sets.slice(startIndex, endIndex).map((set, index) => (
           <Link key={index} to={`/sets/${set.id}`} className="set">
             {/* {set.id}  */}
-            {set.name}
+            <h2 className="setName">{set.name}</h2>
             <div className="pieces">
               {set.pieces &&
                 set.pieces.map((piece, index) => (
@@ -51,6 +57,51 @@ const Sets = () => {
                     )}
                   </div>
                 ))}
+            </div>
+            <p>
+              Base defense: {set.pieces[0].defense.base * set.pieces.length}
+            </p>
+            <p> Resistances:</p>
+            <div className="resistances">
+              <div className="resistance">
+                <img src={fire} alt="fire" className="resistanceIcon" />
+                <p className={set.pieces[0].resistances.fire < 0 && "negative"}>
+                  {" "}
+                  {set.pieces[0].resistances.fire * set.pieces.length}
+                </p>
+              </div>
+              <div className="resistance">
+                <img src={water} alt="water" className="resistanceIcon" />
+                <p
+                  className={set.pieces[0].resistances.water < 0 && "negative"}
+                >
+                  {set.pieces[0].resistances.water * set.pieces.length}
+                </p>
+              </div>
+              <div className="resistance">
+                <img src={ice} alt="ice" className="resistanceIcon" />
+                <p className={set.pieces[0].resistances.ice < 0 && "negative"}>
+                  {set.pieces[0].resistances.ice * set.pieces.length}
+                </p>
+              </div>
+              <div className="resistance">
+                <img src={thunder} alt="thunder" className="resistanceIcon" />
+                <p
+                  className={
+                    set.pieces[0].resistances.thunder < 0 && "negative"
+                  }
+                >
+                  {set.pieces[0].resistances.thunder * set.pieces.length}
+                </p>
+              </div>
+              <div className="resistance">
+                <img src={dragon} alt="dragon" className="resistanceIcon" />
+                <p
+                  className={set.pieces[0].resistances.dragon < 0 && "negative"}
+                >
+                  {set.pieces[0].resistances.dragon * set.pieces.length}
+                </p>
+              </div>
             </div>
             {set.bonus ? <p>Bonus: {set.bonus.name}</p> : <p>Without bonus</p>}
           </Link>
