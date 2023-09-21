@@ -10,7 +10,7 @@
   padding: 10px;
 }
 
-.setPiece img {
+.setPiece setPieceImg {
   margin: 10px auto;
   display: block;
   width: 200px;
@@ -45,7 +45,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .setPiece img {
+  .setPiece setPieceImg {
     width: 100px;
   }
 }

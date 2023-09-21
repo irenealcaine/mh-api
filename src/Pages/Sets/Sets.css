@@ -28,6 +28,30 @@ img {
   justify-content: center;
 }
 
+.resistances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ffaf3f;
+  margin: 5px 0 5px 10px;
+  width: fit-content;
+}
+
+.resistance {
+  display: flex;
+}
+
+.negative {
+  color: red;
+}
+
+.resistanceIcon {
+  width: 15px;
+}
+
 .pagination {
   display: flex;
   gap: 10px;
