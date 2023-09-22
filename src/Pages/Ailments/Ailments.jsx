@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Ailments = () => {
   const [ailments, setAilments] = useState([]);
@@ -15,7 +16,9 @@ const Ailments = () => {
   return (
     <div className="ailments">
       {ailments.map((ailment, index) => (
-        <div key={index}>{ailment.name}</div>
+        <Link key={index} to={`/ailments/${ailment.id}`}>
+          {ailment.name}
+        </Link>
       ))}
     </div>
   );
