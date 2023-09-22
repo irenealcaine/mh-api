@@ -127,7 +127,7 @@ const MonsterPage = () => {
         Locations:
         {monster.locations &&
           monster.locations.map((location, index) => (
-            <span key={index}>{location.name}</span>
+            <Link key={index} to={`/locations/${location.id}`}>{location.name}</Link>
           ))}
       </p>
 
