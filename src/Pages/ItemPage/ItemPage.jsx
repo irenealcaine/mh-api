@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./ItemPage.css";
 
 const ItemPage = () => {
   const [itemData, setItemData] = useState([]);
@@ -38,9 +39,13 @@ const ItemPage = () => {
       <p>Carry limit: {itemData.carryLimit}</p>
       {/* {console.log(armor.crafting)} */}
       <p>Needed for:</p>
-      <div>
+      <div className="needed">
         {armor.map((armorItem, index) => (
-          <Link key={index} to={`/sets/${armorItem.armorSet.id}`}>
+          <Link
+            className="neededArmor"
+            key={index}
+            to={`/sets/${armorItem.armorSet.id}`}
+          >
             {armorItem.name}
           </Link>
         ))}
