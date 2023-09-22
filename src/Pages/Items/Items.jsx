@@ -4,25 +4,65 @@ import "./Items.css";
 
 const Items = () => {
   const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [selectValue, setSelectValue] = useState(null);
 
   useEffect(() => {
     fetch(`https://mhw-db.com/items`)
       .then((response) => response.json())
       .then((data) => {
         setItems(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 
   return (
     <div className="itemsPage">
       <h1>Items</h1>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <select
+        onChange={
+          (e) => setSelectValue(e.target.value)
+          // (e) => console.log(e.target.value)
+        }
+      >
+        <option defaultValue hidden>
+          Rarity
+        </option>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+        <option value={4}>4</option>
+        <option value={5}>5</option>
+        <option value={5}>5</option>
+        <option value={6}>6</option>
+        <option value={7}>7</option>
+        <option value={8}>8</option>
+        <option value={9}>9</option>
+        <option value={10}>10</option>
+        <option value={11}>11</option>
+        <option value={12}>12</option>
+      </select>
+      {console.log(selectValue)}
       <div className="items">
-        {items.map((item, index) => (
-          <Link className="item" to={`/items/${item.id}`} key={index}>
-            {item.name}
-          </Link>
-        ))}
+        {items
+          .filter((item) =>
+            item.name.toLowerCase().includes(inputValue.toLowerCase()),
+          )
+          .filter((item) =>
+            selectValue
+              ? parseInt(item.rarity) === parseInt(selectValue)
+              : item,
+          )
+          .map((item, index) => (
+            <Link className="item" to={`/items/${item.id}`} key={index}>
+              {item.name}
+            </Link>
+          ))}
       </div>
     </div>
   );

@@ -13,11 +13,13 @@
   border-radius: 15px;
   padding: 10px;
   transition: all 0.2s ease;
+  width: 90%;
 }
 
 .set:hover {
-  scale: 1.05;
+  scale: 1.02;
 }
+
 .pieces {
   display: flex;
   flex-wrap: wrap;
@@ -52,29 +54,27 @@
   width: 15px;
 }
 
-.pagination {
+.pagesNumber {
+  margin: 30px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-}
-.pagesNumber {
-  display: flex;
-  gap: 10px;
-}
-
-.pageNumber {
-  aspect-ratio: 1/1;
-  padding: 3px;
-  border-radius: 20px;
+  align-items: center;
+  cursor: pointer;
 }
 
 .selected {
   text-decoration: underline;
   font-weight: 700;
+  text-shadow: 1px 1px 2px #00fa;
 }
 
 @media screen and (max-width: 768px) {
   .pieceImg {
     width: 100px;
+  }
+  .set {
+    width: 100%;
   }
 }

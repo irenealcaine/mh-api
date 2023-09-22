@@ -26,16 +26,18 @@ const SetPage = () => {
       <h1>{set.name} set</h1>
       <div>{set.rank}</div>
       <div className="setPieces">
-        {set.pieces &&
-          set.pieces.map((piece, index) => (
+        {set?.pieces &&
+          set?.pieces?.map((piece, index) => (
             <div key={index} className="setPiece">
               <h2>{piece.name}</h2>
               <p>{piece.type}</p>
-              <img
-                className="setPieceImg"
-                src={piece.assets.imageMale}
-                alt={piece.name}
-              />
+              {piece?.assets?.imageMale && (
+                <img
+                  className="setPieceImg"
+                  src={piece.assets.imageMale}
+                  alt={piece.name}
+                />
+              )}
 
               {/* <p>{piece.rank}</p>
               <p>{piece.rarity}</p>
