@@ -1,10 +1,12 @@
-.needed {
+.needed,
+.monsterItems {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.neededArmor {
+.neededArmor,
+.monsterItem {
   padding: 5px 10px;
   background-color: #ffb14398;
   border-radius: 20px;

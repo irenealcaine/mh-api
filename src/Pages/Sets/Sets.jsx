@@ -190,23 +190,23 @@ const Sets = () => {
             </Link>
           ))}
       </div>
-      <div className="pagination">
+      <div className="pagesNumber">
         {currentPage > 1 && (
           <button onClick={previusPage}>
             <AiOutlineCaretLeft />
           </button>
         )}
-        <div className="pagesNumber">
-          {pages.map((page, index) => (
-            <div
-              className={`pageNumber ${page === currentPage && "selected"}`}
-              key={index}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </div>
-          ))}
-        </div>
+
+        {pages.map((page, index) => (
+          <div
+            className={`pageNumber ${page === currentPage && "selected"}`}
+            key={index}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </div>
+        ))}
+
         {currentPage < pages.length && (
           <button onClick={nextPage}>
             <AiOutlineCaretRight />
