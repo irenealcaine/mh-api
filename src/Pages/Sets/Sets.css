@@ -54,20 +54,13 @@
   width: 15px;
 }
 
-.pagination {
-  margin-top: 30px;
-}
-
-.pagination,
 .pagesNumber {
+  margin: 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
   align-items: center;
-}
-
-.pageNumber {
   cursor: pointer;
 }
 

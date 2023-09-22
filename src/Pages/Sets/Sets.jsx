@@ -6,6 +6,7 @@ import water from "../../assets/images/icons/water.png";
 import ice from "../../assets/images/icons/ice.png";
 import thunder from "../../assets/images/icons/thunder.png";
 import dragon from "../../assets/images/icons/dragon.png";
+import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 
 const Sets = () => {
   const [sets, setSets] = useState([]);
@@ -81,21 +82,29 @@ const Sets = () => {
         <option value={"high"}>High</option>
         <option value={"master"}>Master</option>
       </select>
-      <div className="pagination">
-        {currentPage > 1 && <button onClick={previusPage}>Previus</button>}
-        <div className="pagesNumber">
-          {pages.map((page, index) => (
-            <div
-              className={`pageNumber ${page === currentPage && "selected"}`}
-              key={index}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </div>
-          ))}
-        </div>
-        {currentPage < pages.length && <button onClick={nextPage}>Next</button>}
+      {/* <div className="pagination"> */}
+      <div className="pagesNumber">
+        {currentPage > 1 && (
+          <button onClick={previusPage}>
+            <AiOutlineCaretLeft />
+          </button>
+        )}
+        {pages.map((page, index) => (
+          <div
+            className={`pageNumber ${page === currentPage && "selected"}`}
+            key={index}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </div>
+        ))}
+        {currentPage < pages.length && (
+          <button onClick={nextPage}>
+            <AiOutlineCaretRight />
+          </button>
+        )}
       </div>
+      {/* </div> */}
       <div className="sets">
         {sets
           .filter((set) =>
@@ -182,7 +191,11 @@ const Sets = () => {
           ))}
       </div>
       <div className="pagination">
-        {currentPage > 1 && <button onClick={previusPage}>Previus</button>}
+        {currentPage > 1 && (
+          <button onClick={previusPage}>
+            <AiOutlineCaretLeft />
+          </button>
+        )}
         <div className="pagesNumber">
           {pages.map((page, index) => (
             <div
@@ -194,7 +207,11 @@ const Sets = () => {
             </div>
           ))}
         </div>
-        {currentPage < pages.length && <button onClick={nextPage}>Next</button>}
+        {currentPage < pages.length && (
+          <button onClick={nextPage}>
+            <AiOutlineCaretRight />
+          </button>
+        )}
       </div>
     </div>
   );
