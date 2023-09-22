@@ -8,3 +8,15 @@
 .icon {
   width: 20px;
 }
+
+.rewards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.reward {
+  padding: 5px 10px;
+  background-color: #ffb14398;
+  border-radius: 20px;
+}

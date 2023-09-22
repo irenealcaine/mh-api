@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./MonsterPage.css";
 import dragonIcon from "../../assets/images/icons/dragon.png";
 import fireIcon from "../../assets/images/icons/fire.png";
@@ -131,19 +131,19 @@ const MonsterPage = () => {
           ))}
       </p>
 
+      <p>Rewards:</p>
       {monster.rewards !== undefined && monster.rewards.length > 0 && (
-        <p>
-          Rewards:
+        <div className="rewards">
           {monster.rewards.map((reward, index) => (
-            <div key={index}>
-              {console.log(reward)}
+            <Link
+              className="reward"
+              key={index}
+              to={`/items/${reward.item.id}`}
+            >
               {reward.item.name}
-              Rarity: {reward.item.rarity}
-              Value: {reward.item.value}
-              {reward.item.description}
-            </div>
+            </Link>
           ))}
-        </p>
+        </div>
       )}
     </div>
   );
