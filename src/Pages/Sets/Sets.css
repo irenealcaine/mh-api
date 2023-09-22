@@ -13,11 +13,13 @@
   border-radius: 15px;
   padding: 10px;
   transition: all 0.2s ease;
+  width: 90%;
 }
 
 .set:hover {
-  scale: 1.05;
+  scale: 1.02;
 }
+
 .pieces {
   display: flex;
   flex-wrap: wrap;
@@ -53,13 +55,16 @@
 }
 
 .pagination {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+  margin-top: 30px;
 }
+
+.pagination,
 .pagesNumber {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .pageNumber {
@@ -71,10 +76,14 @@
 .selected {
   text-decoration: underline;
   font-weight: 700;
+  text-shadow: 1px 1px 2px #00fa;
 }
 
 @media screen and (max-width: 768px) {
   .pieceImg {
     width: 100px;
+  }
+  .set {
+    width: 100%;
   }
 }

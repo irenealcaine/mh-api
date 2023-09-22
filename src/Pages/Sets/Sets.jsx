@@ -37,7 +37,7 @@ const Sets = () => {
   }, []);
 
   const pages = [];
-  for (var i = 1; i <= Math.ceil(maxItems / itemsPerPage); i++) {
+  for (var i = 1; i <= Math.ceil(sets.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
@@ -53,7 +53,7 @@ const Sets = () => {
               {set.pieces &&
                 set.pieces.map((piece, index) => (
                   <div key={index}>
-                    {piece.assets.imageMale && (
+                    {piece?.assets?.imageMale && (
                       <img
                         className="pieceImg"
                         src={piece.assets.imageMale}
