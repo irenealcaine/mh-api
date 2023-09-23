@@ -17,7 +17,11 @@ const SkillPage = () => {
 
   return (
     <div className="skillPage">
-      <h1>{skill.name}</h1>
+      <h1>{skill?.name}</h1>
+      <p>{skill?.description}</p>
+      {skill?.ranks?.map((rank, index) => (
+        <p>Rank {rank.level}: {rank.description}</p>
+      ))}
     </div>
   );
 };
