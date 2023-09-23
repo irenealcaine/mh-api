@@ -1,15 +1,26 @@
-import "./Header.css";
-import logo from "../../assets/images/monsters/36.png";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/monsters/36.png";
+import "./Header.css";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="header">
       <nav>
         <Link to={`/`}>
           <img src={logo} className="logo" alt="logo" />
         </Link>
-        <ul>
+        <div className={`menu-toggle ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
+          {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+        </div>
+        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <Link to={"/monsters"}>
             <li>Monsters</li>
           </Link>
@@ -20,16 +31,16 @@ const Header = () => {
             <li>Items</li>
           </Link>
           <Link to={"/locations"}>
-            <li>locations</li>
+            <li>Locations</li>
           </Link>
           <Link to={"/weapons"}>
-            <li>weapons</li>
+            <li>Weapons</li>
           </Link>
           <Link to={"/ailments"}>
-            <li>ailments</li>
+            <li>Ailments</li>
           </Link>
           <Link to={"/skills"}>
-            <li>skills</li>
+            <li>Skills</li>
           </Link>
         </ul>
       </nav>
