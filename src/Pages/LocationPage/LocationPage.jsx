@@ -18,6 +18,11 @@ const LocationPage = () => {
   return (
     <div className="locationPage">
       <h1>{location.name}</h1>
+      {location?.camps?.map((camp, index) => (
+        <p key={index}>{camp.name}, zone: {camp.zone}</p>
+      ))}
+
+      <p>Monsters:</p>
     </div>
   );
 };

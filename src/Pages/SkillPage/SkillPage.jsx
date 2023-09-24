@@ -20,7 +20,7 @@ const SkillPage = () => {
       <h1>{skill?.name}</h1>
       <p>{skill?.description}</p>
       {skill?.ranks?.map((rank, index) => (
-        <p>Rank {rank.level}: {rank.description}</p>
+        <p key={index} >Rank {rank.level}: {rank.description}</p>
       ))}
     </div>
   );
