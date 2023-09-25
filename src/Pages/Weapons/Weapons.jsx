@@ -2,8 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Weapons = () => {
-  const { slug } = useParams(); // Obtiene el valor de slug de la URL
-  console.log(slug);
+  const { slug } = useParams();
 
   const [weaponsData, setWeaponsData] = useState([]);
 
@@ -15,9 +14,8 @@ const Weapons = () => {
           return weapon.type === slug;
         });
         setWeaponsData(filteredWeaponsData);
-        console.log(weaponsData.type);
       });
-  }, [slug]); // Añade slug como dependencia para que se actualice cuando cambie
+  }, [slug]);
 
   return (
     <div className="weapons">
