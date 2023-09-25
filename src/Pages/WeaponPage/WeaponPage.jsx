@@ -38,24 +38,28 @@ const WeaponPage = () => {
       {weapon?.crafting?.craftable ? (
         <div>
           <p>Crafting items:</p>
-          {weapon.crafting.craftingMaterials.map((material, index) => (
-            <Link to={`/items/${material.item.id}`}>
-              {material.item.name} x {material.quantity}
-            </Link>
-          ))}
+          <div className="buttonContainer">
+            {weapon.crafting.craftingMaterials.map((material, index) => (
+              <Link to={`/items/${material.item.id}`} className="button">
+                {material.item.name} x {material.quantity}
+              </Link>
+            ))}
+          </div>
         </div>
       ) : (
         <div>
           <p>Upgrade from:</p>
-          <Link to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}>
+          <Link className="button" to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}>
             {previous?.name}
           </Link>
           <p>Upgrade items:</p>
-          {weapon?.crafting?.upgradeMaterials.map((material, index) => (
-            <Link to={`/items/${material.item.id}`}>
-              {material.item.name} x {material.quantity}
-            </Link>
-          ))}
+          <div className="buttonContainer">
+            {weapon?.crafting?.upgradeMaterials.map((material, index) => (
+              <Link key={index} to={`/items/${material.item.id}`} className="button">
+                {material.item.name} x {material.quantity}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
