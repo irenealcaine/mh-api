@@ -16,6 +16,7 @@ import SkillPage from "./Pages/SkillPage/SkillPage";
 import Skills from "./Pages/Skills/Skills";
 import WeaponPage from "./Pages/WeaponPage/WeaponPage";
 import Weapons from "./Pages/Weapons/Weapons";
+import WeaponsCategories from "./Pages/WeaponsCategories/WeaponsCategories";
 
 function App() {
   return (
@@ -32,8 +33,9 @@ function App() {
             <Route path="/items/:id" exact element={<ItemPage />} />
             <Route path="/locations" exact element={<Locations />} />
             <Route path="/locations/:id" exact element={<LocationPage />} />
-            <Route path="/weapons" exact element={<Weapons />} />
-            <Route path="/weapons/:id" exact element={<WeaponPage />} />
+            <Route path="/weapons" exact element={<WeaponsCategories />} />
+            <Route path="/weapons/:slug" exact element={<Weapons />} />
+            <Route path="/weapons/:slug/:id" exact element={<WeaponPage />} />
             <Route path="/ailments" exact element={<Ailments />} />
             <Route path="/ailments/:id" exact element={<AilmentPage />} />
             <Route path="/skills" exact element={<Skills />} />
