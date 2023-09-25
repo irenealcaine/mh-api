@@ -112,7 +112,6 @@ const ItemPage = () => {
       <p>Value: {itemData.value}</p>
       <p>Rarity: {itemData.rarity}</p>
       <p>Carry limit: {itemData.carryLimit}</p>
-      {/* {console.log(armor.crafting)} */}
       <p>Needed for:</p>
       <div className="needed">
         {armor.map((armorItem, index) => (
@@ -191,7 +190,6 @@ const ItemPage = () => {
             to={`/weapons/${upgradeItem.type}/${upgradeItem.id}`}
           >
             {upgradeItem.name}
-            {console.log(upgradeItem)}
           </Link>
         ))}
       </div>

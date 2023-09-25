@@ -9,7 +9,6 @@ const Locations = () => {
       .then((response) => response.json())
       .then((data) => {
         setLocations(data);
-        // console.log(data);
       });
   }, []);
 

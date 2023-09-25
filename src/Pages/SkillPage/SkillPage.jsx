@@ -13,7 +13,6 @@ const SkillPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setSkillData(data);
-        console.log(data);
       });
 
     fetch(`https://mhw-db.com/armor`)

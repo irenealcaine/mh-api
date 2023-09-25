@@ -18,11 +18,14 @@ const WeaponPage = () => {
       .then((response) => response.json())
       .then((weaponsData) => {
         setWeapons(weaponsData);
+        if (weapon?.crafting) {
+          const previousWeapon = weaponsData.find(
+            (prevWeapon) => prevWeapon.id === weapon?.crafting?.previous,
+          );
+          setPrevious(previousWeapon);
+        }
       });
-
-    setPrevious(weapons[weapon?.crafting?.previous - 1]);
-    console.log(previous);
-  }, [id, previous, weapons, weapon?.crafting?.previous]);
+  }, [id, previous, weapons, weapon?.crafting?.previous, weapon?.crafting]);
 
   return (
     <div className="weaponPage">

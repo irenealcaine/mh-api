@@ -9,7 +9,6 @@ const Skills = () => {
       .then((response) => response.json())
       .then((data) => {
         setSkills(data);
-        // console.log(data);
       });
   }, []);
 

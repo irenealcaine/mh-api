@@ -17,7 +17,6 @@ const SetPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setSet(data);
-        console.log(data);
       });
   }, [id, set.id]);
 

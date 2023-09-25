@@ -12,7 +12,6 @@ const AilmentPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setAilmentData(data);
-        console.log(data);
       });
 
     fetch(`https://mhw-db.com/monsters`)
