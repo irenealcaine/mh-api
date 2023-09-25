@@ -30,6 +30,7 @@ const WeaponPage = () => {
   return (
     <div className="weaponPage">
       <h1>{weapon.name}</h1>
+      <img src={weapon?.assets?.image} alt={weapon.name} />
       <p>Rarity: {weapon.rarity}</p>
       <p>Damage: {weapon?.attack?.display}</p>
       <p>Damage type: {weapon.damageType}</p>
