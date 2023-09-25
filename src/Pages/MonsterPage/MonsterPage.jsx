@@ -127,7 +127,19 @@ const MonsterPage = () => {
         Locations:
         {monster.locations &&
           monster.locations.map((location, index) => (
-            <Link key={index} to={`/locations/${location.id}`}>{location.name}</Link>
+            <Link key={index} to={`/locations/${location.id}`}>
+              {location.name}
+            </Link>
+          ))}
+      </p>
+
+      <p>
+        Ailments:
+        {monster.ailments &&
+          monster.ailments.map((ailment, index) => (
+            <Link key={index} to={`/ailments/${ailment.id}`}>
+              {ailment.name}
+            </Link>
           ))}
       </p>
 

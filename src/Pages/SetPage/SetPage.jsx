@@ -17,7 +17,6 @@ const SetPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setSet(data);
-        console.log(data);
       });
   }, [id, set.id]);
 
@@ -42,7 +41,6 @@ const SetPage = () => {
               {/* <p>{piece.rank}</p>
               <p>{piece.rarity}</p>
               <p>{piece.armorSet}</p> */}
-
 
               <p>Base defense: {piece.defense.base}</p>
               <p>Resistances:</p>
@@ -99,10 +97,9 @@ const SetPage = () => {
               <p>
                 {piece.skills &&
                   piece.skills.map((skill, index) => (
-                    <div key={index}>
-                      <span className="setSkillName">{skill.skillName}</span>:{" "}
-                      {skill.description}
-                    </div>
+                    <Link key={index} to={`/skills/${skill.skill}`}>
+                      {skill.skillName} {skill.level}
+                    </Link>
                   ))}
               </p>
             </div>

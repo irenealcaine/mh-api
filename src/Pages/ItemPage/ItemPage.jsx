@@ -4,8 +4,13 @@ import "./ItemPage.css";
 
 const ItemPage = () => {
   const [itemData, setItemData] = useState([]);
+  const [recoveryData, setRecoveryData] = useState([]);
+  const [protectionData, setProtectionData] = useState([]);
+  const [craftingData, setCraftingData] = useState([]);
+  const [upgradeData, setUpgradeData] = useState([]);
   const [armor, setArmor] = useState([]);
   const [monsters, setMonsters] = useState([]);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,6 +47,62 @@ const ItemPage = () => {
         });
         setMonsters(filteredMonstersData);
       });
+
+    fetch(`https://mhw-db.com/ailments`)
+      .then((response) => response.json())
+      .then((recoveryData) => {
+        const filteredRecoveryData = recoveryData.filter((ailment) => {
+          for (const item of ailment.recovery.items) {
+            if (item.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setRecoveryData(filteredRecoveryData);
+      });
+
+    fetch(`https://mhw-db.com/ailments`)
+      .then((response) => response.json())
+      .then((potectionData) => {
+        const filteredProtectionData = potectionData.filter((ailment) => {
+          for (const item of ailment.protection.items) {
+            if (item.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setProtectionData(filteredProtectionData);
+      });
+
+    fetch(`https://mhw-db.com/weapons`)
+      .then((response) => response.json())
+      .then((craftingData) => {
+        const filteredCraftingData = craftingData.filter((weapon) => {
+          for (const material of weapon?.crafting?.craftingMaterials) {
+            if (material?.item?.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setCraftingData(filteredCraftingData);
+      });
+
+    fetch(`https://mhw-db.com/weapons`)
+      .then((response) => response.json())
+      .then((upgradeData) => {
+        const filteredUpgradeData = upgradeData.filter((weapon) => {
+          for (const material of weapon?.crafting?.upgradeMaterials) {
+            if (material?.item?.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setUpgradeData(filteredUpgradeData);
+      });
   }, [id, itemData.id, itemData.name]);
 
   return (
@@ -51,7 +112,6 @@ const ItemPage = () => {
       <p>Value: {itemData.value}</p>
       <p>Rarity: {itemData.rarity}</p>
       <p>Carry limit: {itemData.carryLimit}</p>
-      {/* {console.log(armor.crafting)} */}
       <p>Needed for:</p>
       <div className="needed">
         {armor.map((armorItem, index) => (
@@ -74,6 +134,62 @@ const ItemPage = () => {
             to={`/monsters/${monsterItem.id}`}
           >
             {monsterItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Ailments recovery:</p>
+
+      <div className="monsterItems">
+        {recoveryData.map((recoveryItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/ailments/${recoveryItem.id}`}
+          >
+            {recoveryItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Ailments protection:</p>
+
+      <div className="monsterItems">
+        {protectionData.map((protectionItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/ailments/${protectionItem.id}`}
+          >
+            {protectionItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Crafting:</p>
+
+      <div className="monsterItems">
+        {craftingData.map((craftingItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/weapons/${craftingItem.id}`}
+          >
+            {craftingItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Upgrade:</p>
+
+      <div className="monsterItems">
+        {upgradeData.map((upgradeItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/weapons/${upgradeItem.type}/${upgradeItem.id}`}
+          >
+            {upgradeItem.name}
           </Link>
         ))}
       </div>

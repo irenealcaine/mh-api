@@ -12,7 +12,6 @@ const Items = () => {
       .then((response) => response.json())
       .then((data) => {
         setItems(data);
-        // console.log(data);
       });
   }, []);
 
@@ -24,12 +23,7 @@ const Items = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <select
-        onChange={
-          (e) => setSelectValue(e.target.value)
-          // (e) => console.log(e.target.value)
-        }
-      >
+      <select onChange={(e) => setSelectValue(e.target.value)}>
         <option defaultValue hidden>
           Rarity
         </option>
@@ -47,7 +41,6 @@ const Items = () => {
         <option value={11}>11</option>
         <option value={12}>12</option>
       </select>
-      {console.log(selectValue)}
       <div className="items">
         {items
           .filter((item) =>

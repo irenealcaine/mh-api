@@ -9,7 +9,6 @@ const Ailments = () => {
       .then((response) => response.json())
       .then((data) => {
         setAilments(data);
-        // console.log(data);
       });
   }, []);
 
