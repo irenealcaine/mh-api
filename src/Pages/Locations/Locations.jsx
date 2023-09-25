@@ -14,6 +14,7 @@ const Locations = () => {
 
   return (
     <div className="locations">
+      <h1>Locations</h1>
       {locations.map((location, index) => (
         <Link key={index} to={`/locations/${location.id}`}>
           {location.name}

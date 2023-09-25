@@ -19,10 +19,13 @@ const Weapons = () => {
 
   return (
     <div className="weapons">
+      <h1>Weapons</h1>
       {weaponsData.map((weaponsItem, index) => (
         <Link to={`/weapons/${slug}/${weaponsItem.id}`}>
           <p>{weaponsItem.name}</p>
-          {weaponsItem?.assets?.icon && <img src={weaponsItem.assets.icon} alt={weaponsItem.name}/>}
+          {weaponsItem?.assets?.icon && (
+            <img src={weaponsItem.assets.icon} alt={weaponsItem.name} />
+          )}
         </Link>
       ))}
     </div>
