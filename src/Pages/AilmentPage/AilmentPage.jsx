@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const AilmentPage = () => {
   const [ailment, setAilment] = useState([]);
@@ -22,30 +22,24 @@ const AilmentPage = () => {
       <h2>Recovery</h2>
       <p>Actions:</p>
       {ailment?.recovery?.actions &&
-        ailment.recovery.actions.map((action, index) => (
-          <span>{action}</span>
-        ))
-      }
+        ailment.recovery.actions.map((action, index) => <span>{action}</span>)}
       <p>Items:</p>
       {ailment?.recovery?.items &&
         ailment.recovery.items.map((item, index) => (
-          <span>{item.name}</span>
-        ))
-      }
+          <Link to={`/items/${item.id}`}>{item.name}</Link>
+        ))}
 
       <h2>Protection</h2>
       <p>Items:</p>
       {ailment?.protection?.items &&
         ailment.protection.items.map((item, index) => (
-          <span>{item.name}</span>
-        ))
-      }
+          <Link to={`/items/${item.id}`}>{item.name}</Link>
+        ))}
       <p>Skills:</p>
       {ailment?.protection?.skills &&
         ailment.protection.skills.map((skill, index) => (
-          <span>{skill.name}</span>
-        ))
-      }
+          <Link to={`/skills/${skill.id}`}>{skill.name}</Link>
+        ))}
     </div>
   );
 };
