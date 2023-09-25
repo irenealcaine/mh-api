@@ -10,6 +10,7 @@ import LocationPage from "./Pages/LocationPage/LocationPage";
 import Locations from "./Pages/Locations/Locations";
 import MonsterPage from "./Pages/MonsterPage/MonsterPage";
 import Monsters from "./Pages/Monsters/Monsters";
+import NotFound from "./Pages/NotFound/NotFound";
 import SetPage from "./Pages/SetPage/SetPage";
 import Sets from "./Pages/Sets/Sets";
 import SkillPage from "./Pages/SkillPage/SkillPage";
@@ -24,22 +25,32 @@ function App() {
       <BrowserRouter>
         <Main>
           <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/monsters" exact element={<Monsters />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/*" element={<NotFound />} />
+
+            <Route path="/monsters" element={<Monsters />} />
             <Route path="/monsters/:id" element={<MonsterPage />} />
-            <Route path="/sets" exact element={<Sets />} />
-            <Route path="/sets/:id" exact element={<SetPage />} />
-            <Route path="/items" exact element={<Items />} />
-            <Route path="/items/:id" exact element={<ItemPage />} />
-            <Route path="/locations" exact element={<Locations />} />
-            <Route path="/locations/:id" exact element={<LocationPage />} />
-            <Route path="/weapons" exact element={<WeaponsCategories />} />
-            <Route path="/weapons/:slug" exact element={<Weapons />} />
-            <Route path="/weapons/:slug/:id" exact element={<WeaponPage />} />
-            <Route path="/ailments" exact element={<Ailments />} />
-            <Route path="/ailments/:id" exact element={<AilmentPage />} />
-            <Route path="/skills" exact element={<Skills />} />
-            <Route path="/skills/:id" exact element={<SkillPage />} />
+
+            <Route path="/sets" element={<Sets />} />
+            <Route path="/sets/:id" element={<SetPage />} />
+
+            <Route path="/items" element={<Items />} />
+            <Route path="/items/:id" element={<ItemPage />} />
+
+            <Route path="/locations" element={<Locations />} />
+            <Route path="/locations/:id" element={<LocationPage />} />
+
+            <Route path="/weapons" element={<WeaponsCategories />} />
+            <Route path="/weapons/:slug" element={<Weapons />} />
+            <Route path="/weapons/*" element={<NotFound />} />
+            <Route path="/weapons/:slug/:id" element={<WeaponPage />} />
+            <Route path="/weapons/*/*" element={<NotFound />} />
+
+            <Route path="/ailments" element={<Ailments />} />
+            <Route path="/ailments/:id" element={<AilmentPage />} />
+
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/skills/:id" element={<SkillPage />} />
           </Routes>
         </Main>
       </BrowserRouter>
