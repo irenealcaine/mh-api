@@ -125,30 +125,32 @@ const MonsterPage = () => {
 
       <p>
         Locations:
+      </p>
+      <div className="buttonContainer">
         {monster.locations &&
           monster.locations.map((location, index) => (
-            <Link key={index} to={`/locations/${location.id}`}>
+            <Link key={index} to={`/locations/${location.id}`} className="button">
               {location.name}
             </Link>
           ))}
-      </p>
-
+      </div>
       <p>
         Ailments:
+      </p>
+      <div className="buttonContainer">
         {monster.ailments &&
           monster.ailments.map((ailment, index) => (
-            <Link key={index} to={`/ailments/${ailment.id}`}>
+            <Link key={index} to={`/ailments/${ailment.id}`} className="button">
               {ailment.name}
             </Link>
           ))}
-      </p>
-
+      </div>
       <p>Rewards:</p>
       {monster.rewards !== undefined && monster.rewards.length > 0 && (
-        <div className="rewards">
+        <div className="buttonContainer">
           {monster.rewards.map((reward, index) => (
             <Link
-              className="reward"
+              className="button"
               key={index}
               to={`/items/${reward.item.id}`}
             >

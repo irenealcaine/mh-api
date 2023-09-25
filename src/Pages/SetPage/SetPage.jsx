@@ -82,26 +82,27 @@ const SetPage = () => {
               </div>
 
               <p>Crafting:</p>
-              <div className="setMaterialItems">
+              <div className="buttonContainer">
                 {piece.crafting.materials &&
                   piece.crafting.materials.map((material, index) => (
                     <Link
                       key={index}
-                      className="setMaterialItem"
+                      className="button"
                       to={`/items/${material.item.id}`}
                     >
                       {material.item.name} x {material.quantity}
                     </Link>
                   ))}
               </div>
-              <p>
+              <p> Skills:</p>
+              <div className="buttonContainer">
                 {piece.skills &&
                   piece.skills.map((skill, index) => (
-                    <Link key={index} to={`/skills/${skill.skill}`}>
+                    <Link key={index} to={`/skills/${skill.skill}`} className="button">
                       {skill.skillName} {skill.level}
                     </Link>
                   ))}
-              </p>
+              </div>
             </div>
           ))}
       </div>

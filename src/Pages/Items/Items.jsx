@@ -41,7 +41,7 @@ const Items = () => {
         <option value={11}>11</option>
         <option value={12}>12</option>
       </select>
-      <div className="items">
+      <div className="buttonContainer">
         {items
           .filter((item) =>
             item.name.toLowerCase().includes(inputValue.toLowerCase()),
@@ -52,7 +52,7 @@ const Items = () => {
               : item,
           )
           .map((item, index) => (
-            <Link className="item" to={`/items/${item.id}`} key={index}>
+            <Link className="button" to={`/items/${item.id}`} key={index}>
               {item.name}
             </Link>
           ))}

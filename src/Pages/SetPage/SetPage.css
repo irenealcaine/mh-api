@@ -28,10 +28,7 @@
 }
 
 .setMaterialItem {
-  padding: 5px 10px;
-  background-color: #ffb14398;
-  border-radius: 20px;
-  width: fit-content;
+
 }
 
 @media screen and (max-width: 1000px) {

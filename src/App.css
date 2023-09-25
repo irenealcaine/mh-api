@@ -25,3 +25,23 @@ h4 {
 h1 {
   letter-spacing: 2px;
 }
+
+.button{
+  padding: 5px 10px;
+  background-color: #ffb14398;
+  border-radius: 20px;
+  width: fit-content;
+  display: inline-block;
+  transition: all .3s ease
+}
+
+.button:hover{
+  background-color: #9e5c0098;
+}
+
+.buttonContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  padding: 5px;
+}

@@ -39,15 +39,17 @@ const LocationPage = () => {
       ))}
 
       <p>Monsters:</p>
-      {monsters.map((monsterItem, index) => (
-        <Link
-          className="monsterItem"
-          key={index}
-          to={`/monsters/${monsterItem.id}`}
-        >
-          {monsterItem.name}
-        </Link>
-      ))}
+      <div className="buttonContainer">
+        {monsters.map((monsterItem, index) => (
+          <Link
+            className="button"
+            key={index}
+            to={`/monsters/${monsterItem.id}`}
+          >
+            {monsterItem.name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
