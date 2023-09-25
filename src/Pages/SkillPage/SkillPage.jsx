@@ -55,10 +55,10 @@ const SkillPage = () => {
       ))}
 
       <p>Armor:</p>
-      <div className="needed">
+      <div className="buttonContainer">
         {armorData.map((armorItem, index) => (
           <Link
-            className="neededArmor"
+            className="button"
             key={index}
             to={`/sets/${armorItem.armorSet.id}`}
           >
@@ -68,10 +68,10 @@ const SkillPage = () => {
       </div>
 
       <p>Ailment:</p>
-      <div className="needed">
+      <div className="buttonContainer">
         {ailmentData.map((ailmentItem, index) => (
           <Link
-            className="neededArmor"
+            className="button"
             key={index}
             to={`/ailments/${ailmentItem.id}`}
           >

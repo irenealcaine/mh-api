@@ -113,10 +113,10 @@ const ItemPage = () => {
       <p>Rarity: {itemData.rarity}</p>
       <p>Carry limit: {itemData.carryLimit}</p>
       <p>Needed for:</p>
-      <div className="needed">
+      <div className="buttonContainer">
         {armor.map((armorItem, index) => (
           <Link
-            className="neededArmor"
+            className="button"
             key={index}
             to={`/sets/${armorItem.armorSet.id}`}
           >
@@ -126,10 +126,10 @@ const ItemPage = () => {
       </div>
       <p>Obtained in:</p>
 
-      <div className="monsterItems">
+      <div className="buttonContainer">
         {monsters.map((monsterItem, index) => (
           <Link
-            className="monsterItem"
+            className="button"
             key={index}
             to={`/monsters/${monsterItem.id}`}
           >
@@ -140,10 +140,10 @@ const ItemPage = () => {
 
       <p>Ailments recovery:</p>
 
-      <div className="monsterItems">
+      <div className="buttonContainer">
         {recoveryData.map((recoveryItem, index) => (
           <Link
-            className="monsterItem"
+            className="button"
             key={index}
             to={`/ailments/${recoveryItem.id}`}
           >
@@ -154,10 +154,10 @@ const ItemPage = () => {
 
       <p>Ailments protection:</p>
 
-      <div className="monsterItems">
+      <div className="buttonContainer">
         {protectionData.map((protectionItem, index) => (
           <Link
-            className="monsterItem"
+            className="button"
             key={index}
             to={`/ailments/${protectionItem.id}`}
           >
@@ -168,10 +168,10 @@ const ItemPage = () => {
 
       <p>Crafting:</p>
 
-      <div className="monsterItems">
+      <div className="buttonContainer">
         {craftingData.map((craftingItem, index) => (
           <Link
-            className="monsterItem"
+            className="button"
             key={index}
             to={`/weapons/${craftingItem.id}`}
           >
@@ -182,10 +182,10 @@ const ItemPage = () => {
 
       <p>Upgrade:</p>
 
-      <div className="monsterItems">
+      <div className="buttonContainer">
         {upgradeData.map((upgradeItem, index) => (
           <Link
-            className="monsterItem"
+            className="button"
             key={index}
             to={`/weapons/${upgradeItem.type}/${upgradeItem.id}`}
           >

@@ -8,9 +8,7 @@
 }
 
 .item {
-  padding: 5px 10px;
-  background-color: #ffb14398;
-  border-radius: 20px;
+
 }
 
 @media screen and (max-width: 768px) {
