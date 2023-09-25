@@ -22,23 +22,31 @@ const AilmentPage = () => {
       <h2>Recovery</h2>
       <p>Actions:</p>
       {ailment?.recovery?.actions &&
-        ailment.recovery.actions.map((action, index) => <span>{action}</span>)}
+        ailment.recovery.actions.map((action, index) => (
+          <span key={index}>{action}</span>
+        ))}
       <p>Items:</p>
       {ailment?.recovery?.items &&
         ailment.recovery.items.map((item, index) => (
-          <Link to={`/items/${item.id}`}>{item.name}</Link>
+          <Link key={index} to={`/items/${item.id}`}>
+            {item.name}
+          </Link>
         ))}
 
       <h2>Protection</h2>
       <p>Items:</p>
       {ailment?.protection?.items &&
         ailment.protection.items.map((item, index) => (
-          <Link to={`/items/${item.id}`}>{item.name}</Link>
+          <Link key={index} to={`/items/${item.id}`}>
+            {item.name}
+          </Link>
         ))}
       <p>Skills:</p>
       {ailment?.protection?.skills &&
         ailment.protection.skills.map((skill, index) => (
-          <Link to={`/skills/${skill.id}`}>{skill.name}</Link>
+          <Link key={index} to={`/skills/${skill.id}`}>
+            {skill.name}
+          </Link>
         ))}
     </div>
   );
