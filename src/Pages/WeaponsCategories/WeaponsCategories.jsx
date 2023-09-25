@@ -1,5 +1,18 @@
 import { Link } from "react-router-dom";
 import greatSword from "../../assets/images/weapons/great-sword.png";
+import longSword from "../../assets/images/weapons/long-sword.png";
+import swordAndShield from "../../assets/images/weapons/sword-and-shield.png";
+import dualBlades from "../../assets/images/weapons/dual-blades.png";
+import hammer from "../../assets/images/weapons/hammer.png";
+import huntingHorn from "../../assets/images/weapons/hunting-horn.png";
+import lance from "../../assets/images/weapons/lance.png";
+import gunlance from "../../assets/images/weapons/gunlance.png";
+import switchAxe from "../../assets/images/weapons/switch-axe.png";
+import chargeBlade from "../../assets/images/weapons/charge-blade.png";
+import insectGlaive from "../../assets/images/weapons/insect-glaive.png";
+import lightBowgun from "../../assets/images/weapons/light-bowgun.png";
+import heavyBowgun from "../../assets/images/weapons/heavy-bowgun.png";
+import bow from "../../assets/images/weapons/bow.png";
 
 const categories = [
   {
@@ -10,67 +23,67 @@ const categories = [
   {
     slug: "long-sword",
     name: "Long sword",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: longSword,
   },
   {
     slug: "sword-and-shield",
-    name: "sword-and-shield",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Sword and shield",
+    img: swordAndShield,
   },
   {
     slug: "dual-blades",
-    name: "dual-blades",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Dual blades",
+    img: dualBlades,
   },
   {
     slug: "hammer",
-    name: "hammer",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Hammer",
+    img: hammer,
   },
   {
     slug: "hunting-horn",
     name: "hunting-horn",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: huntingHorn,
   },
   {
     slug: "lance",
     name: "lance",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: lance,
   },
   {
     slug: "gunlance",
     name: "gunlance",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: gunlance,
   },
   {
     slug: "switch-axe",
     name: "switch-axe",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: switchAxe,
   },
   {
     slug: "charge-blade",
-    name: "charge-blade",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Charge blade",
+    img: chargeBlade,
   },
   {
     slug: "insect-glaive",
-    name: "insect-glaive",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Insect glaive",
+    img: insectGlaive,
   },
   {
     slug: "light-bowgun",
-    name: "light-bowgun",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Light bowgun",
+    img: lightBowgun,
   },
   {
     slug: "heavy-bowgun",
-    name: "heavy-bowgun",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Heavy bowgun",
+    img: heavyBowgun,
   },
   {
     slug: "bow",
-    name: "bow",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    name: "Bow",
+    img: bow,
   },
 ];
 
@@ -80,7 +93,7 @@ const WeaponsCategories = () => {
       {categories.map((category, index) => (
         <Link key={index} to={`/weapons/${category.slug}`}>
           <p>{category.name}</p>
-          <img src={category.img} />
+          <img src={category.img} alt={category.name} />
         </Link>
       ))}
     </div>
