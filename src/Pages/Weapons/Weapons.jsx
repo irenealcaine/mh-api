@@ -22,7 +22,7 @@ const Weapons = () => {
       {weaponsData.map((weaponsItem, index) => (
         <Link to={`/weapons/${slug}/${weaponsItem.id}`}>
           <p>{weaponsItem.name}</p>
-          {weaponsItem?.assets?.icon && <img src={weaponsItem.assets.icon} />}
+          {weaponsItem?.assets?.icon && <img src={weaponsItem.assets.icon} alt={weaponsItem.name}/>}
         </Link>
       ))}
     </div>
