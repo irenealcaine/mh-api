@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import greatSword from "../../assets/images/weapons/great-sword.png";
 
 const categories = [
   {
     slug: "great-sword",
     name: "Great sword",
-    img: "https://assets.mhw-db.com/weapons/great-sword/icons/83b9e1fa727ca6ba922b53a42626a167.26ad6221e21811da5278502fabfc138b33d622bc.png",
+    img: greatSword,
   },
   {
     slug: "long-sword",
