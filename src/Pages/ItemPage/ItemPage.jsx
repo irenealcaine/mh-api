@@ -4,8 +4,11 @@ import "./ItemPage.css";
 
 const ItemPage = () => {
   const [itemData, setItemData] = useState([]);
+  const [recoveryData, setRecoveryData] = useState([]);
+  const [protectionData, setProtectionData] = useState([]);
   const [armor, setArmor] = useState([]);
   const [monsters, setMonsters] = useState([]);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,6 +45,34 @@ const ItemPage = () => {
         });
         setMonsters(filteredMonstersData);
       });
+
+    fetch(`https://mhw-db.com/ailments`)
+      .then((response) => response.json())
+      .then((recoveryData) => {
+        const filteredRecoveryData = recoveryData.filter((ailment) => {
+          for (const item of ailment.recovery.items) {
+            if (item.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setRecoveryData(filteredRecoveryData);
+      });
+
+    fetch(`https://mhw-db.com/ailments`)
+      .then((response) => response.json())
+      .then((potectionData) => {
+        const filteredProtectionData = potectionData.filter((ailment) => {
+          for (const item of ailment.protection.items) {
+            if (item.name === itemData.name) {
+              return true;
+            }
+          }
+          return false;
+        });
+        setProtectionData(filteredProtectionData);
+      });
   }, [id, itemData.id, itemData.name]);
 
   return (
@@ -74,6 +105,34 @@ const ItemPage = () => {
             to={`/monsters/${monsterItem.id}`}
           >
             {monsterItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Ailments recovery:</p>
+
+      <div className="monsterItems">
+        {recoveryData.map((recoveryItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/ailments/${recoveryItem.id}`}
+          >
+            {recoveryItem.name}
+          </Link>
+        ))}
+      </div>
+
+      <p>Ailments protection:</p>
+
+      <div className="monsterItems">
+        {protectionData.map((protectionItem, index) => (
+          <Link
+            className="monsterItem"
+            key={index}
+            to={`/ailments/${protectionItem.id}`}
+          >
+            {protectionItem.name}
           </Link>
         ))}
       </div>
