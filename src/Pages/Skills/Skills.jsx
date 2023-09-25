@@ -14,6 +14,7 @@ const Skills = () => {
 
   return (
     <div className="skills">
+      <h1>Skills</h1>
       {skills.map((skill, index) => (
         <Link key={index} to={`/skills/${skill.id}`}>
           {skill.name}

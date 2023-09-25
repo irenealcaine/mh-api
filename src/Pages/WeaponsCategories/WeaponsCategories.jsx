@@ -90,6 +90,7 @@ const categories = [
 const WeaponsCategories = () => {
   return (
     <div className="weaponsCategories">
+      <h1>Weapons</h1>
       {categories.map((category, index) => (
         <Link key={index} to={`/weapons/${category.slug}`}>
           <p>{category.name}</p>

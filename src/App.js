@@ -26,7 +26,7 @@ function App() {
         <Main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
 
             <Route path="/monsters" element={<Monsters />} />
             <Route path="/monsters/:id" element={<MonsterPage />} />
