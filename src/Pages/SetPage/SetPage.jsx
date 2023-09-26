@@ -38,12 +38,9 @@ const SetPage = () => {
                 />
               )}
 
-              {/* <p>{piece.rank}</p>
-              <p>{piece.rarity}</p>
-              <p>{piece.armorSet}</p> */}
-
-              <p>Base defense: {piece.defense.base}</p>
-              <p>Resistances:</p>
+              <h3>Base defense</h3>
+              <p>{piece.defense.base}</p>
+              <h3>Resistances</h3>
               <div className="resistances">
                 <div className="resistance">
                   <img src={fire} alt="fire" className="resistanceIcon" />
@@ -81,28 +78,39 @@ const SetPage = () => {
                 </div>
               </div>
 
-              <p>Crafting:</p>
-              <div className="buttonContainer">
-                {piece.crafting.materials &&
-                  piece.crafting.materials.map((material, index) => (
-                    <Link
-                      key={index}
-                      className="button"
-                      to={`/items/${material.item.id}`}
-                    >
-                      {material.item.name} x {material.quantity}
-                    </Link>
-                  ))}
-              </div>
-              <p> Skills:</p>
-              <div className="buttonContainer">
-                {piece.skills &&
-                  piece.skills.map((skill, index) => (
-                    <Link key={index} to={`/skills/${skill.skill}`} className="button">
-                      {skill.skillName} {skill.level}
-                    </Link>
-                  ))}
-              </div>
+              {piece.crafting.materials.length >= 1 && (
+                <div>
+                  <h3>Crafting</h3>
+                  <div className="buttonContainer">
+                    {piece.crafting.materials.map((material, index) => (
+                      <Link
+                        key={index}
+                        className="button"
+                        to={`/items/${material.item.id}`}
+                      >
+                        {material.item.name} x {material.quantity}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {piece.skills.length >= 1 && (
+                <div>
+                  <h3> Skills</h3>
+                  <div className="buttonContainer">
+                    {piece.skills.map((skill, index) => (
+                      <Link
+                        key={index}
+                        to={`/skills/${skill.skill}`}
+                        className="button"
+                      >
+                        {skill.skillName} {skill.level}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
       </div>

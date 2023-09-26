@@ -34,29 +34,20 @@ const Sets = () => {
     fetch("https://mhw-db.com/armor/sets")
       .then((response) => response.json())
       .then((data) => {
-        // const first100Sets = data.slice(0, maxItems);
-        // setSets(first100Sets);
         setSets(data);
-        // const filteredSets = data
-        //   .filter((set) =>
-        //     set.name.toLowerCase().includes(inputValue.toLowerCase()),
-        //   )
-        //   .filter((set) => (selectValue ? set.rank === selectValue : set));
-        // setSets(filteredSets);
         setFilteredSets(data);
       });
   }, []);
 
   useEffect(() => {
-    // Filtra los conjuntos cuando cambia el valor de búsqueda o selección
     const filtered = sets
       .filter((set) =>
         set.name.toLowerCase().includes(inputValue.toLowerCase()),
       )
-      .filter((set) => (selectValue ? set.rank === selectValue : true)); // Modificado: Usa "true" para mantener los conjuntos si no hay selección
+      .filter((set) => (selectValue ? set.rank === selectValue : true));
 
     setFilteredSets(filtered);
-    setCurrentPage(1); // Restablece la página actual al filtrar
+    setCurrentPage(1);
   }, [inputValue, selectValue, sets]);
 
   const totalFilteredPages = Math.ceil(filteredSets.length / itemsPerPage);
@@ -82,7 +73,7 @@ const Sets = () => {
         <option value={"high"}>High</option>
         <option value={"master"}>Master</option>
       </select>
-      {/* <div className="pagination"> */}
+
       <div className="pagesNumber">
         {currentPage > 1 && (
           <button onClick={previusPage}>
@@ -104,7 +95,7 @@ const Sets = () => {
           </button>
         )}
       </div>
-      {/* </div> */}
+
       <div className="sets">
         {sets
           .filter((set) =>
@@ -182,14 +173,11 @@ const Sets = () => {
                   </p>
                 </div>
               </div>
-              {set.bonus ? (
-                <p>Bonus: {set.bonus.name}</p>
-              ) : (
-                <p>Without bonus</p>
-              )}
+              {set.bonus ? <p>Bonus: {set.bonus.name}</p> : null}
             </Link>
           ))}
       </div>
+
       <div className="pagesNumber">
         {currentPage > 1 && (
           <button onClick={previusPage}>
