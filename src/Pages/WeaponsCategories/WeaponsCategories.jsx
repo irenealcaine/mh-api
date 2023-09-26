@@ -43,22 +43,22 @@ const categories = [
   },
   {
     slug: "hunting-horn",
-    name: "hunting-horn",
+    name: "Hunting horn",
     img: huntingHorn,
   },
   {
     slug: "lance",
-    name: "lance",
+    name: "Lance",
     img: lance,
   },
   {
     slug: "gunlance",
-    name: "gunlance",
+    name: "Gunlance",
     img: gunlance,
   },
   {
     slug: "switch-axe",
-    name: "switch-axe",
+    name: "Switch axe",
     img: switchAxe,
   },
   {
