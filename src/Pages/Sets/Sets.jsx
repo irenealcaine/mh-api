@@ -120,10 +120,9 @@ const Sets = () => {
                     </div>
                   ))}
               </div>
-              <p>
-                Base defense: {set.pieces[0].defense.base * set.pieces.length}
-              </p>
-              <p> Resistances:</p>
+              <h3>Base defense</h3>
+              <p>{set.pieces[0].defense.base * set.pieces.length}</p>
+              <h3> Resistances</h3>
               <div className="resistances">
                 <div className="resistance">
                   <img src={fire} alt="fire" className="resistanceIcon" />
@@ -173,7 +172,11 @@ const Sets = () => {
                   </p>
                 </div>
               </div>
-              {set.bonus ? <p>Bonus: {set.bonus.name}</p> : null}
+              {set.bonus ? (
+                <div>
+                  <h3>Bonus</h3> <p>{set.bonus.name}</p>{" "}
+                </div>
+              ) : null}
             </Link>
           ))}
       </div>
