@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./WeaponPage.css"
 
 const WeaponPage = () => {
   const [weapon, setWeapon] = useState([]);
