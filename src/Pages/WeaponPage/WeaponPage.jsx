@@ -37,7 +37,19 @@ const WeaponPage = () => {
       <p>{weapon?.attack?.display}</p>
       <h2>Damage type</h2>
       <p>{weapon.damageType}</p>
-      {weapon?.elements?.length >= 1 && <p>Weapon elements:</p>}
+      {weapon?.elements?.length >= 1 && (
+        <div>
+          <h2>Elements</h2>
+          <div>
+            {weapon.elements.map((element, index) => (
+              <div key={index}>
+                {/* {element} */}
+                {console.log(element)}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {weapon?.crafting?.craftable ? (
         <div>
           <h2>Crafting items</h2>
