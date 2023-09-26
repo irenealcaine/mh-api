@@ -1,29 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Home.css"
-import AAA from "../../assets/images/monsters/42.png"
 
 const homeItems = [
   {
     "name": "monsters",
-    "img": AAA
   }, {
     "name": "sets",
-    "img": AAA
-  }, {
-    "name": "items",
-    "img": AAA
-  }, {
-    "name": "locations",
-    "img": AAA
   }, {
     "name": "weapons",
-    "img": AAA
+  }, {
+    "name": "locations",
+  }, {
+    "name": "items",
   }, {
     "name": "ailments",
-    "img": AAA
   }, {
     "name": "skills",
-    "img": AAA
   },
 ]
 
@@ -36,9 +28,9 @@ const Home = () => {
         {homeItems.map((homeItem, index) => (
           <Link key={index} className="homeItem" to={`/${homeItem.name}`}>
             <h2>{homeItem.name}</h2>
+            {console.log()}
             <img
-              // src={homeItem.img}
-              src={require(`../../assets/images/monsters/${Math.floor(Math.random() * 50)}.png`)}
+              src={require(`../../assets/images/monsters/${Math.floor(Math.random() * 44 + 1)}.png`)}
               alt={homeItem.name} />
           </Link>
         ))}
