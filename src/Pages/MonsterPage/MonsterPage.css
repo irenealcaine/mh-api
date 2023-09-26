@@ -25,5 +25,10 @@
   border: 1px solid #ffaf3f;
   margin: 5px 0 5px 10px;
   width: fit-content;
-  
+}
+
+.weakness {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
 }

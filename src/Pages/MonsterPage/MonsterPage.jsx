@@ -91,7 +91,7 @@ const MonsterPage = () => {
             {monster.weaknesses
               .filter((weakness) => weakness.condition === null)
               .map((weakness, index) => (
-                <div key={index}>
+                <div key={index} className="weakness">
                   <img
                     src={icons[weakness.element]}
                     alt={weakness.element}
@@ -121,7 +121,7 @@ const MonsterPage = () => {
                 {monster.weaknesses
                   .filter((weakness) => weakness.condition !== null)
                   .map((weakness, index) => (
-                    <div key={index}>
+                    <div key={index} className="weakness">
                       <img
                         src={icons[weakness.element]}
                         alt={weakness.element}
