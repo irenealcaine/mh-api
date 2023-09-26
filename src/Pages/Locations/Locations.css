@@ -1,22 +1,18 @@
-.locations img {
-}
-
 .locationsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
 
 .locationItem {
   border-radius: 20px;
   overflow: hidden;
-  width: 300px;
   position: relative;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3 ease;
 }
 
 .locationItem img {
@@ -26,10 +22,39 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }
 
 .locationItem:hover img {
   opacity: 0.5;
   scale: 1.2;
+  z-index: 1;
+}
+
+.locationItem h2 {
+  scale: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.locationItem:hover h2 {
+  scale: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  .locationsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .locationsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .locationsContainer {
+    grid-template-columns: 1fr;
+  }
 }
