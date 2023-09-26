@@ -1,0 +1,9 @@
+.weapons .buttonContainer .weapon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.weapons .buttonContainer .weapon img {
+  width: 25px;
+}

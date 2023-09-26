@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./Weapons.css";
 
 const Weapons = () => {
   const { slug } = useParams();
@@ -20,14 +21,20 @@ const Weapons = () => {
   return (
     <div className="weapons">
       <h1>Weapons</h1>
-      {weaponsData.map((weaponsItem, index) => (
-        <Link to={`/weapons/${slug}/${weaponsItem.id}`}>
-          <p>{weaponsItem.name}</p>
-          {weaponsItem?.assets?.icon && (
-            <img src={weaponsItem.assets.icon} alt={weaponsItem.name} />
-          )}
-        </Link>
-      ))}
+      <div className="buttonContainer">
+        {weaponsData.map((weaponsItem, index) => (
+          <Link
+            key={index}
+            to={`/weapons/${slug}/${weaponsItem.id}`}
+            className="button weapon"
+          >
+            {weaponsItem?.assets?.icon && (
+              <img src={weaponsItem.assets.icon} alt={weaponsItem.name} />
+            )}
+            <p>{weaponsItem.name}</p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
