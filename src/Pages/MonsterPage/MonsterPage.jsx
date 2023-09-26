@@ -56,9 +56,9 @@ const MonsterPage = () => {
       <p>{monster.species}</p>
       {renderMonsterImage()}
       <p>{monster.description}</p>
-      {monster.elements !== undefined && monster.elements.length > 0 && (
-        <p>
-          Elements:
+      {monster?.elements?.length >= 1 && (
+        <div>
+          <h2>Elements</h2>
           {monster.elements.map((element, index) => (
             <img
               key={index}
@@ -67,12 +67,12 @@ const MonsterPage = () => {
               className="icon"
             />
           ))}
-        </p>
+        </div>
       )}
 
-      {monster.resistances !== undefined && monster.resistances.length > 0 && (
-        <p>
-          Resistances:
+      {monster?.resistances?.length >= 1 && (
+        <div>
+          <h2>Resistances</h2>
           {monster.resistances.map((resistance, index) => (
             <img
               key={index}
@@ -81,82 +81,109 @@ const MonsterPage = () => {
               className="icon"
             />
           ))}
-        </p>
-      )}
-
-      {monster.weaknesses !== undefined && monster.weaknesses.length > 0 && (
-        <div>
-          Weakness:
-          {monster.weaknesses
-            .filter((weakness) => weakness.condition === null)
-            .map((weakness, index) => (
-              <div key={index}>
-                <img
-                  src={icons[weakness.element]}
-                  alt={weakness.element}
-                  className="icon"
-                />
-                <span>{weakness.stars}</span>
-                <span>{weakness.condition}</span>
-              </div>
-            ))}
-          {monster.weaknesses
-            .filter((weakness) => weakness.condition !== null)
-            .slice(0, 1)
-            .map((weakness, index) => (
-              <div key={index}>
-                <span>{weakness.condition}</span>
-              </div>
-            ))}
-          {monster.weaknesses
-            .filter((weakness) => weakness.condition !== null)
-            .map((weakness, index) => (
-              <div key={index}>
-                <img
-                  src={icons[weakness.element]}
-                  alt={weakness.element}
-                  className="icon"
-                />
-                <span>{weakness.stars}</span>
-              </div>
-            ))}
         </div>
       )}
 
-      <p>
-        Locations:
-      </p>
-      <div className="buttonContainer">
-        {monster.locations &&
-          monster.locations.map((location, index) => (
-            <Link key={index} to={`/locations/${location.id}`} className="button">
-              {location.name}
-            </Link>
-          ))}
-      </div>
-      <p>
-        Ailments:
-      </p>
-      <div className="buttonContainer">
-        {monster.ailments &&
-          monster.ailments.map((ailment, index) => (
-            <Link key={index} to={`/ailments/${ailment.id}`} className="button">
-              {ailment.name}
-            </Link>
-          ))}
-      </div>
-      <p>Rewards:</p>
-      {monster.rewards !== undefined && monster.rewards.length > 0 && (
-        <div className="buttonContainer">
-          {monster.rewards.map((reward, index) => (
-            <Link
-              className="button"
-              key={index}
-              to={`/items/${reward.item.id}`}
-            >
-              {reward.item.name}
-            </Link>
-          ))}
+      {monster?.weaknesses?.length >= 1 && (
+        <div>
+          <h2>Weakness</h2>
+          <div className="weaknesses">
+            {monster.weaknesses
+              .filter((weakness) => weakness.condition === null)
+              .map((weakness, index) => (
+                <div key={index} className="weakness">
+                  <img
+                    src={icons[weakness.element]}
+                    alt={weakness.element}
+                    className="icon"
+                  />
+                  <span>{weakness.stars}</span>
+                  <span>{weakness.condition}</span>
+                </div>
+              ))}
+          </div>
+
+          {monster.weaknesses.some(
+            (weakness) => weakness.condition !== null,
+          ) && (
+            <div>
+              {console.log(monster.weaknesses)}
+              {monster.weaknesses
+                .filter((weakness) => weakness.condition !== null)
+                .slice(0, 1)
+                .map((weakness, index) => (
+                  <div key={index}>
+                    <h3>{weakness.condition}</h3>
+                  </div>
+                ))}
+
+              <div className="weaknesses">
+                {monster.weaknesses
+                  .filter((weakness) => weakness.condition !== null)
+                  .map((weakness, index) => (
+                    <div key={index} className="weakness">
+                      <img
+                        src={icons[weakness.element]}
+                        alt={weakness.element}
+                        className="icon"
+                      />
+                      <span>{weakness.stars}</span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {monster.locations && (
+        <div>
+          <h2>Locations</h2>
+          <div className="buttonContainer">
+            {monster.locations.map((location, index) => (
+              <Link
+                key={index}
+                to={`/locations/${location.id}`}
+                className="button"
+              >
+                {location.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {monster.ailments && (
+        <div>
+          <h2>Ailments</h2>
+          <div className="buttonContainer">
+            {monster.ailments.map((ailment, index) => (
+              <Link
+                key={index}
+                to={`/ailments/${ailment.id}`}
+                className="button"
+              >
+                {ailment.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {monster?.rewards?.length >= 1 && (
+        <div>
+          <h2>Rewards</h2>
+          <div className="buttonContainer">
+            {monster.rewards.map((reward, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/items/${reward.item.id}`}
+              >
+                {reward.item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

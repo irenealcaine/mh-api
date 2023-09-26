@@ -112,87 +112,120 @@ const ItemPage = () => {
       <p>Value: {itemData.value}</p>
       <p>Rarity: {itemData.rarity}</p>
       <p>Carry limit: {itemData.carryLimit}</p>
-      <p>Needed for:</p>
-      <div className="buttonContainer">
-        {armor.map((armorItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/sets/${armorItem.armorSet.id}`}
-          >
-            {armorItem.name}
-          </Link>
-        ))}
-      </div>
-      <p>Obtained in:</p>
 
-      <div className="buttonContainer">
-        {monsters.map((monsterItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/monsters/${monsterItem.id}`}
-          >
-            {monsterItem.name}
-          </Link>
-        ))}
-      </div>
+      {monsters.length >= 1 && (
+        <div>
+          <h2>Obtained in</h2>
+          <div className="buttonContainer">
+            {monsters.map((monsterItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/monsters/${monsterItem.id}`}
+              >
+                {monsterItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
-      <p>Ailments recovery:</p>
+      {recoveryData.length >= 1 || protectionData.length >= 1 ? (
+        <div>
+          <h2>Ailments</h2>
 
-      <div className="buttonContainer">
-        {recoveryData.map((recoveryItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/ailments/${recoveryItem.id}`}
-          >
-            {recoveryItem.name}
-          </Link>
-        ))}
-      </div>
+          {recoveryData.length >= 1 && (
+            <div>
+              <h3>Recovery</h3>
+              <div className="buttonContainer">
+                {recoveryData.map((recoveryItem, index) => (
+                  <Link
+                    className="button"
+                    key={index}
+                    to={`/ailments/${recoveryItem.id}`}
+                  >
+                    {recoveryItem.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
-      <p>Ailments protection:</p>
+          {protectionData.length >= 1 && (
+            <div>
+              <h3>Protection</h3>
+              <div className="buttonContainer">
+                {protectionData.map((protectionItem, index) => (
+                  <Link
+                    className="button"
+                    key={index}
+                    to={`/ailments/${protectionItem.id}`}
+                  >
+                    {protectionItem.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
 
-      <div className="buttonContainer">
-        {protectionData.map((protectionItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/ailments/${protectionItem.id}`}
-          >
-            {protectionItem.name}
-          </Link>
-        ))}
-      </div>
+      {armor.length >= 1 && (
+        <div>
+          <h2>Armor crafting</h2>
+          <div className="buttonContainer">
+            {armor.map((armorItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/sets/${armorItem.armorSet.id}`}
+              >
+                {armorItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
-      <p>Crafting:</p>
+      {craftingData.length >= 1 || upgradeData.length >= 1 ? (
+        <div>
+          <h2>Weapons</h2>
 
-      <div className="buttonContainer">
-        {craftingData.map((craftingItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/weapons/${craftingItem.id}`}
-          >
-            {craftingItem.name}
-          </Link>
-        ))}
-      </div>
+          {craftingData.length >= 1 && (
+            <div>
+              <h3>Crafting</h3>
+              <div className="buttonContainer">
+                {craftingData.map((craftingItem, index) => (
+                  <Link
+                    className="button"
+                    key={index}
+                    to={`/weapons/${craftingItem.id}`}
+                  >
+                    {craftingItem.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
-      <p>Upgrade:</p>
-
-      <div className="buttonContainer">
-        {upgradeData.map((upgradeItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/weapons/${upgradeItem.type}/${upgradeItem.id}`}
-          >
-            {upgradeItem.name}
-          </Link>
-        ))}
-      </div>
+          {upgradeData.length >= 1 && (
+            <div>
+              <h3>Upgrade</h3>
+              <div className="buttonContainer">
+                {upgradeData.map((upgradeItem, index) => (
+                  <Link
+                    className="button"
+                    key={index}
+                    to={`/weapons/${upgradeItem.type}/${upgradeItem.id}`}
+                  >
+                    {upgradeItem.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
     </div>
   );
 };

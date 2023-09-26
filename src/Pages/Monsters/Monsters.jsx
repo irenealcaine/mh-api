@@ -26,26 +26,18 @@ const Monsters = () => {
             alt={monster.name}
             className="monsterImg"
           />
-          <h2 className="name">{monster.name}</h2>
+          <h3 className="name">{monster.name}</h3>
           <p className="specie">{monster.species}</p>
-
-          {/* {monster.locations && (
-            <p>
-              Locations:
-              {monster.locations.map((location, index) => (
-                <span key={index}> {location.name}</span>
-              ))}
-            </p>
-          )} */}
         </Link>
       ));
   };
 
   return (
     <div>
-      <h1>Larges</h1>
+      <h1>Monsters</h1>
+      <h2>Larges</h2>
       <div className="monsters">{renderMonsters("large")}</div>
-      <h1>Smalls</h1>
+      <h2>Smalls</h2>
       <div className="monsters">{renderMonsters("small")}</div>
     </div>
   );

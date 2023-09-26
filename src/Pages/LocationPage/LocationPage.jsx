@@ -38,18 +38,22 @@ const LocationPage = () => {
         </p>
       ))}
 
-      <p>Monsters:</p>
-      <div className="buttonContainer">
-        {monsters.map((monsterItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/monsters/${monsterItem.id}`}
-          >
-            {monsterItem.name}
-          </Link>
-        ))}
-      </div>
+      {monsters.length >= 1 && (
+        <div>
+          <h2>Monsters</h2>
+          <div className="buttonContainer">
+            {monsters.map((monsterItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/monsters/${monsterItem.id}`}
+              >
+                {monsterItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

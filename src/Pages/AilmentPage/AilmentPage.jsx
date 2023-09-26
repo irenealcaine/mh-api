@@ -33,52 +33,90 @@ const AilmentPage = () => {
     <div className="ailmentPage">
       <h1>{ailmentData.name}</h1>
       <p>{ailmentData.description}</p>
-      <h2>Recovery</h2>
-      <p>Actions:</p>
-      {ailmentData?.recovery?.actions &&
-        ailmentData.recovery.actions.map((action, index) => (
-          <span key={index}>{action}</span>
-        ))}
-      <p>Items:</p>
-      <div className="buttonContainer">
-        {ailmentData?.recovery?.items &&
-          ailmentData.recovery.items.map((item, index) => (
-            <Link key={index} to={`/items/${item.id}`} className="button">
-              {item.name}
-            </Link>
-          ))}
-      </div>
-      <h2>Protection</h2>
-      <p>Items:</p>
-      <div className="buttonContainer">
-        {ailmentData?.protection?.items &&
-          ailmentData.protection.items.map((item, index) => (
-            <Link key={index} to={`/items/${item.id}`} className="button">
-              {item.name}
-            </Link>
-          ))}
-      </div>
-      <p>Skills:</p>
-      <div className="buttonContainer">
-        {ailmentData?.protection?.skills &&
-          ailmentData.protection.skills.map((skill, index) => (
-            <Link key={index} to={`/skills/${skill.id}`} className="button">
-              {skill.name}
-            </Link>
-          ))}
-      </div>
-      <p>Monsters:</p>
-      <div className="buttonContainer">
-        {monsters.map((monsterItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/monsters/${monsterItem.id}`}
-          >
-            {monsterItem.name}
-          </Link>
-        ))}
-      </div>
+
+      {ailmentData?.recovery?.actions.length >= 1 ||
+      ailmentData?.recovery?.items.length >= 1 ? (
+        <div>
+          <h2>Recovery</h2>
+          {ailmentData?.recovery?.actions.length >= 1 && (
+            <div>
+              <h3>Actions</h3>
+              <div>
+                {ailmentData.recovery.actions.map((action, index) => (
+                  <span key={index}>{action}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {ailmentData?.recovery?.items.length >= 1 && (
+            <div>
+              <h3>Items</h3>
+              <div className="buttonContainer">
+                {ailmentData.recovery.items.map((item, index) => (
+                  <Link key={index} to={`/items/${item.id}`} className="button">
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
+
+      {ailmentData?.protection?.items.length >= 1 ||
+      ailmentData?.protection?.skills.length >= 1 ? (
+        <div>
+          <h2>Protection</h2>
+
+          {ailmentData?.protection?.items.length >= 1 && (
+            <div>
+              <h3>Items</h3>
+              <div className="buttonContainer">
+                {ailmentData.protection.items.map((item, index) => (
+                  <Link key={index} to={`/items/${item.id}`} className="button">
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {ailmentData?.protection?.skills.length >= 1 && (
+            <div>
+              <h3>Skills</h3>
+              <div className="buttonContainer">
+                {ailmentData.protection.skills.map((skill, index) => (
+                  <Link
+                    key={index}
+                    to={`/skills/${skill.id}`}
+                    className="button"
+                  >
+                    {skill.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : null}
+
+      {monsters.length >= 1 && (
+        <div>
+          <h2>Monsters</h2>
+          <div className="buttonContainer">
+            {monsters.map((monsterItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/monsters/${monsterItem.id}`}
+              >
+                {monsterItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

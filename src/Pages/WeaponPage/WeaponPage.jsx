@@ -31,13 +31,28 @@ const WeaponPage = () => {
     <div className="weaponPage">
       <h1>{weapon.name}</h1>
       <img src={weapon?.assets?.image} alt={weapon.name} />
-      <p>Rarity: {weapon.rarity}</p>
-      <p>Damage: {weapon?.attack?.display}</p>
-      <p>Damage type: {weapon.damageType}</p>
-      {weapon?.elements?.length >= 1 && <p>Weapon elements:</p>}
+      <h2>Rarity</h2>
+      <p>{weapon.rarity}</p>
+      <h2>Damage</h2>
+      <p>{weapon?.attack?.display}</p>
+      <h2>Damage type</h2>
+      <p>{weapon.damageType}</p>
+      {weapon?.elements?.length >= 1 && (
+        <div>
+          <h2>Elements</h2>
+          <div>
+            {weapon.elements.map((element, index) => (
+              <div key={index}>
+                {/* {element} */}
+                {console.log(element)}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {weapon?.crafting?.craftable ? (
         <div>
-          <p>Crafting items:</p>
+          <h2>Crafting items</h2>
           <div className="buttonContainer">
             {weapon.crafting.craftingMaterials.map((material, index) => (
               <Link to={`/items/${material.item.id}`} className="button">
@@ -48,14 +63,22 @@ const WeaponPage = () => {
         </div>
       ) : (
         <div>
-          <p>Upgrade from:</p>
-          <Link className="button" to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}>
+          <h2>Upgrade from</h2>
+          <Link
+            className="button"
+            to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}
+          >
             {previous?.name}
           </Link>
-          <p>Upgrade items:</p>
+
+          <h2>Upgrade items</h2>
           <div className="buttonContainer">
             {weapon?.crafting?.upgradeMaterials.map((material, index) => (
-              <Link key={index} to={`/items/${material.item.id}`} className="button">
+              <Link
+                key={index}
+                to={`/items/${material.item.id}`}
+                className="button"
+              >
                 {material.item.name} x {material.quantity}
               </Link>
             ))}

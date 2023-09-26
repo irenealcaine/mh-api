@@ -53,32 +53,38 @@ const SkillPage = () => {
           Rank {rank.level}: {rank.description}
         </p>
       ))}
-
-      <p>Armor:</p>
-      <div className="buttonContainer">
-        {armorData.map((armorItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/sets/${armorItem.armorSet.id}`}
-          >
-            {armorItem.name}
-          </Link>
-        ))}
-      </div>
-
-      <p>Ailment:</p>
-      <div className="buttonContainer">
-        {ailmentData.map((ailmentItem, index) => (
-          <Link
-            className="button"
-            key={index}
-            to={`/ailments/${ailmentItem.id}`}
-          >
-            {ailmentItem.name}
-          </Link>
-        ))}
-      </div>
+      {armorData?.length >= 1 && (
+        <div>
+          <h2>Armor</h2>
+          <div className="buttonContainer">
+            {armorData.map((armorItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/sets/${armorItem.armorSet.id}`}
+              >
+                {armorItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+      {ailmentData?.length >= 1 && (
+        <div>
+          <h2>Ailment:</h2>
+          <div className="buttonContainer">
+            {ailmentData.map((ailmentItem, index) => (
+              <Link
+                className="button"
+                key={index}
+                to={`/ailments/${ailmentItem.id}`}
+              >
+                {ailmentItem.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
