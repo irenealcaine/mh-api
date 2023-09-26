@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./WeaponsCategories.css";
 import greatSword from "../../assets/images/weapons/great-sword.png";
 import longSword from "../../assets/images/weapons/long-sword.png";
 import swordAndShield from "../../assets/images/weapons/sword-and-shield.png";
@@ -91,12 +92,18 @@ const WeaponsCategories = () => {
   return (
     <div className="weaponsCategories">
       <h1>Weapons</h1>
-      {categories.map((category, index) => (
-        <Link key={index} to={`/weapons/${category.slug}`}>
-          <p>{category.name}</p>
-          <img src={category.img} alt={category.name} />
-        </Link>
-      ))}
+      <div className="weaponsContainer">
+        {categories.map((category, index) => (
+          <Link
+            key={index}
+            to={`/weapons/${category.slug}`}
+            className="weaponItem"
+          >
+            <h2>{category.name}</h2>
+            <img src={category.img} alt={category.name} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
