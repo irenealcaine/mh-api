@@ -28,15 +28,6 @@ const Monsters = () => {
           />
           <h2 className="name">{monster.name}</h2>
           <p className="specie">{monster.species}</p>
-
-          {/* {monster.locations && (
-            <p>
-              Locations:
-              {monster.locations.map((location, index) => (
-                <span key={index}> {location.name}</span>
-              ))}
-            </p>
-          )} */}
         </Link>
       ));
   };
