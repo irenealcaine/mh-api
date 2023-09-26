@@ -55,7 +55,7 @@ const SkillPage = () => {
       ))}
       {armorData?.length >= 1 && (
         <div>
-          <h2>Armor:</h2>
+          <h2>Armor</h2>
           <div className="buttonContainer">
             {armorData.map((armorItem, index) => (
               <Link
