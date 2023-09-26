@@ -25,6 +25,10 @@
   transition: all 0.3s ease;
 }
 
+.specie{
+  text-transform: capitalize;
+}
+
 .card:hover .monsterImg {
   opacity: 1;
   scale: 1.2;

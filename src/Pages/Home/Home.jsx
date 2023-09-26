@@ -36,7 +36,10 @@ const Home = () => {
         {homeItems.map((homeItem, index) => (
           <Link key={index} className="homeItem" to={`/${homeItem.name}`}>
             <h2>{homeItem.name}</h2>
-            <img src={homeItem.img} alt={homeItem.name} />
+            <img
+              // src={homeItem.img}
+              src={require(`../../assets/images/monsters/${Math.floor(Math.random() * 50)}.png`)}
+              alt={homeItem.name} />
           </Link>
         ))}
       </div>
