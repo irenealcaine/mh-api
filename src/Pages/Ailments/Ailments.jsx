@@ -15,11 +15,13 @@ const Ailments = () => {
   return (
     <div className="ailments">
       <h1>Ailments</h1>
-      {ailments.map((ailment, index) => (
-        <Link key={index} to={`/ailments/${ailment.id}`}>
-          {ailment.name}
-        </Link>
-      ))}
+      <div className="buttonContainer">
+        {ailments.map((ailment, index) => (
+          <Link key={index} to={`/ailments/${ailment.id}`} className="button">
+            {ailment.name}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
