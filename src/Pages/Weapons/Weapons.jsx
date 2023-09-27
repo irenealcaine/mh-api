@@ -45,9 +45,7 @@ const Weapons = () => {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <select onChange={(e) => setSelectValue(e.target.value)}>
-        <option defaultValue hidden>
-          Rarity
-        </option>
+        <option value={null}>Rarity</option>
         <option value={1}>1</option>
         <option value={2}>2</option>
         <option value={3}>3</option>
@@ -59,9 +57,7 @@ const Weapons = () => {
       </select>
 
       <select onChange={(e) => setElementValue(e.target.value)}>
-        <option defaultValue hidden>
-          Element damage
-        </option>
+        <option value={null}>Element damage</option>
         <option value={"fire"}>Fire</option>
         <option value={"water"}>Water</option>
         <option value={"dragon"}>dragon</option>
