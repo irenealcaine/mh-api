@@ -74,14 +74,34 @@ const MonsterPage = () => {
       {monster?.resistances?.length >= 1 && (
         <div>
           <h2>Resistances</h2>
-          {monster.resistances.map((resistance, index) => (
-            <img
-              key={index}
-              src={icons[resistance.element]}
-              alt={resistance.element}
-              className="icon"
-            />
-          ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition === null)
+            .map((resistance, index) => (
+              <img
+                key={index}
+                src={icons[resistance.element]}
+                alt={resistance.element}
+                className="icon"
+              />
+            ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition !== null)
+            .slice(0, 1)
+            .map((resistance, index) => (
+              <div key={index}>
+                <h3>{resistance.condition}</h3>
+              </div>
+            ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition !== null)
+            .map((resistance, index) => (
+              <img
+                key={index}
+                src={icons[resistance.element]}
+                alt={resistance.element}
+                className="icon"
+              />
+            ))}
         </div>
       )}
 
