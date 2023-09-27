@@ -18,17 +18,23 @@
 .weaknesses {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid #ffaf3f;
   margin: 5px 0 5px 10px;
   width: fit-content;
+  color: #9e5c00;
 }
 
 .weakness {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2px;
+}
+
+.monsterPage h3 {
+  text-transform: capitalize;
 }

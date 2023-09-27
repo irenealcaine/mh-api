@@ -11,6 +11,7 @@ import poisonIcon from "../../assets/images/icons/poison.png";
 import sleepIcon from "../../assets/images/icons/sleep.png";
 import paralysisIcon from "../../assets/images/icons/paralysis.png";
 import stunIcon from "../../assets/images/icons/stun.png";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
@@ -73,14 +74,34 @@ const MonsterPage = () => {
       {monster?.resistances?.length >= 1 && (
         <div>
           <h2>Resistances</h2>
-          {monster.resistances.map((resistance, index) => (
-            <img
-              key={index}
-              src={icons[resistance.element]}
-              alt={resistance.element}
-              className="icon"
-            />
-          ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition === null)
+            .map((resistance, index) => (
+              <img
+                key={index}
+                src={icons[resistance.element]}
+                alt={resistance.element}
+                className="icon"
+              />
+            ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition !== null)
+            .slice(0, 1)
+            .map((resistance, index) => (
+              <div key={index}>
+                <h3>{resistance.condition}</h3>
+              </div>
+            ))}
+          {monster.resistances
+            .filter((resistance) => resistance.condition !== null)
+            .map((resistance, index) => (
+              <img
+                key={index}
+                src={icons[resistance.element]}
+                alt={resistance.element}
+                className="icon"
+              />
+            ))}
         </div>
       )}
 
@@ -97,8 +118,17 @@ const MonsterPage = () => {
                     alt={weakness.element}
                     className="icon"
                   />
-                  <span>{weakness.stars}</span>
-                  <span>{weakness.condition}</span>
+                  <div className="starsContainer">
+                    {Array.from({ length: 3 }, (_, i) => (
+                      <span key={i} className="star">
+                        {i < weakness.stars ? (
+                          <AiFillStar />
+                        ) : (
+                          <AiOutlineStar />
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
           </div>
@@ -127,7 +157,17 @@ const MonsterPage = () => {
                         alt={weakness.element}
                         className="icon"
                       />
-                      <span>{weakness.stars}</span>
+                      <div className="starsContainer">
+                        {Array.from({ length: 3 }, (_, i) => (
+                          <span key={i} className="star">
+                            {i < weakness.stars ? (
+                              <AiFillStar />
+                            ) : (
+                              <AiOutlineStar />
+                            )}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   ))}
               </div>
@@ -153,7 +193,7 @@ const MonsterPage = () => {
         </div>
       )}
 
-      {monster.ailments && (
+      {monster?.ailments?.length >= 1 && (
         <div>
           <h2>Ailments</h2>
           <div className="buttonContainer">

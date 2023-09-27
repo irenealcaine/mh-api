@@ -1,4 +1,15 @@
-.weaponPage img{
+.weaponPage img {
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
+}
+
+.weaponPage p {
+  text-transform: capitalize;
+}
+
+.weaponPage .weaponElement {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
 }

@@ -1,12 +1,35 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./WeaponPage.css"
+import "./WeaponPage.css";
+import dragonIcon from "../../assets/images/icons/dragon.png";
+import fireIcon from "../../assets/images/icons/fire.png";
+import iceIcon from "../../assets/images/icons/ice.png";
+import thunderIcon from "../../assets/images/icons/thunder.png";
+import waterIcon from "../../assets/images/icons/water.png";
+import blastIcon from "../../assets/images/icons/blast.png";
+import poisonIcon from "../../assets/images/icons/poison.png";
+import sleepIcon from "../../assets/images/icons/sleep.png";
+import paralysisIcon from "../../assets/images/icons/paralysis.png";
+import stunIcon from "../../assets/images/icons/stun.png";
 
 const WeaponPage = () => {
   const [weapon, setWeapon] = useState([]);
   const [weapons, setWeapons] = useState([]);
   const [previous, setPrevious] = useState([]);
   const { id } = useParams();
+
+  const icons = {
+    blast: blastIcon,
+    fire: fireIcon,
+    water: waterIcon,
+    dragon: dragonIcon,
+    thunder: thunderIcon,
+    ice: iceIcon,
+    paralysis: paralysisIcon,
+    poison: poisonIcon,
+    sleep: sleepIcon,
+    stun: stunIcon,
+  };
 
   useEffect(() => {
     fetch(`https://mhw-db.com/weapons/${id}`)
@@ -40,12 +63,18 @@ const WeaponPage = () => {
       <p>{weapon.damageType}</p>
       {weapon?.elements?.length >= 1 && (
         <div>
-          <h2>Elements</h2>
+          <h2>Element damage</h2>
           <div>
             {weapon.elements.map((element, index) => (
-              <div key={index}>
-                {/* {element} */}
-                {console.log(element)}
+              <div key={index} className="weaponElement">
+                <span>{element.damage}</span>
+                {/* {element.type} */}
+                <img
+                  key={index}
+                  src={icons[element.type]}
+                  alt={element.type}
+                  className="icon"
+                />
               </div>
             ))}
           </div>
