@@ -15,6 +15,7 @@ const Sets = () => {
   const [selectValue, setSelectValue] = useState(null);
   const [filteredSets, setFilteredSets] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -26,6 +27,11 @@ const Sets = () => {
       .then((data) => {
         setSets(data);
         setFilteredSets(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -39,7 +45,7 @@ const Sets = () => {
         (set) =>
           rangeValue &&
           set.pieces[0].defense.base * set.pieces.length >=
-            parseInt(rangeValue),
+          parseInt(rangeValue),
       );
     setFilteredSets(filtered);
     setCurrentPage(1);
@@ -147,6 +153,18 @@ const Sets = () => {
     ));
   };
 
+  const renderLoader = () => {
+    if (isLoading) {
+      return (
+        <div className="loader">
+
+          Loading...
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div>
       <h1>Sets</h1>
@@ -182,6 +200,8 @@ const Sets = () => {
           </button>
         )}
       </div>
+
+      {renderLoader()}
 
       <div className="sets">{renderSets()}</div>
 
