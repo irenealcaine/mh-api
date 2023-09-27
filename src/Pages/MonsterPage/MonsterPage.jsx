@@ -11,6 +11,7 @@ import poisonIcon from "../../assets/images/icons/poison.png";
 import sleepIcon from "../../assets/images/icons/sleep.png";
 import paralysisIcon from "../../assets/images/icons/paralysis.png";
 import stunIcon from "../../assets/images/icons/stun.png";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
@@ -97,8 +98,17 @@ const MonsterPage = () => {
                     alt={weakness.element}
                     className="icon"
                   />
-                  <span>{weakness.stars}</span>
-                  <span>{weakness.condition}</span>
+                  <div className="starsContainer">
+                    {Array.from({ length: 3 }, (_, i) => (
+                      <span key={i} className="star">
+                        {i < weakness.stars ? (
+                          <AiFillStar />
+                        ) : (
+                          <AiOutlineStar />
+                        )}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
           </div>
@@ -127,7 +137,17 @@ const MonsterPage = () => {
                         alt={weakness.element}
                         className="icon"
                       />
-                      <span>{weakness.stars}</span>
+                      <div className="starsContainer">
+                        {Array.from({ length: 3 }, (_, i) => (
+                          <span key={i} className="star">
+                            {i < weakness.stars ? (
+                              <AiFillStar />
+                            ) : (
+                              <AiOutlineStar />
+                            )}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   ))}
               </div>
@@ -153,7 +173,7 @@ const MonsterPage = () => {
         </div>
       )}
 
-      {monster.ailments && (
+      {monster?.ailments?.length >= 1 && (
         <div>
           <h2>Ailments</h2>
           <div className="buttonContainer">
