@@ -15,6 +15,9 @@ ul {
   gap: 20px;
   list-style: none;
 }
+ul li {
+  text-transform: capitalize;
+}
 
 .menu-toggle {
   display: none;
@@ -30,24 +33,24 @@ ul {
 
 @media screen and (max-width: 768px) {
   ul {
-      display: none;
-    }
+    display: none;
+  }
 
-    ul.active {
-      display: flex;
-      flex-direction: column;
-      width: fit-content;
-      padding: 20px 80px;
-      position: absolute;
-      top: 44px;
-      right: 0;
-      text-align: center;
-      z-index: 10;
-      box-shadow: -8px 8px 22px 0 rgba(31, 38, 135, 0.37);
-      background: #ffbd60f1
+  ul.active {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 20px 80px;
+    position: absolute;
+    top: 44px;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    box-shadow: -8px 8px 22px 0 rgba(31, 38, 135, 0.37);
+    background: #ffbd60f1;
   }
 
   .menu-toggle {
-      display: flex;
+    display: flex;
   }
 }
