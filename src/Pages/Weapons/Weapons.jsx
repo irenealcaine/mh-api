@@ -20,9 +20,9 @@ const Weapons = () => {
           .filter((weapon) => {
             return weapon.type === slug;
           })
-          .filter((weapon) => {
-            return weapon.elements.type === elementValue;
-          })
+          .filter((weapon) =>
+            weapon.elements.some((element) => element.type === elementValue),
+          )
           .filter(
             (weapon) =>
               rangeValue && weapon.attack.display >= parseInt(rangeValue),
@@ -62,6 +62,13 @@ const Weapons = () => {
         </option>
         <option value={"fire"}>Fire</option>
         <option value={"water"}>Water</option>
+        <option value={"dragon"}>dragon</option>
+        <option value={"ice"}>ice</option>
+        <option value={"thunder"}>thunder</option>
+        <option value={"blast"}>blast</option>
+        <option value={"poison"}>poison</option>
+        <option value={"sleep"}>sleep</option>
+        <option value={"paralysis"}>paralysis</option>
       </select>
 
       <input
@@ -77,6 +84,8 @@ const Weapons = () => {
       <input type={"checkbox"} onChange={(e) => setCheckValue(!checkValue)} />
       <p>Craftable</p>
       <div className="buttonContainer">
+        {console.log(weaponsData)}
+
         {weaponsData
           .filter((weapon) =>
             weapon.name.toLowerCase().includes(inputValue.toLowerCase()),
@@ -86,8 +95,9 @@ const Weapons = () => {
               ? parseInt(weapon.rarity) === parseInt(selectValue)
               : weapon,
           )
+
           .filter((weapon) =>
-            elementValue ? weapon.elements.type === elementValue : weapon,
+            weapon.elements.some((element) => element.type === elementValue),
           )
           .filter(
             (weapon) =>
@@ -104,6 +114,7 @@ const Weapons = () => {
                 <img src={weaponsItem.assets.icon} alt={weaponsItem.name} />
               )}
               <p>{weaponsItem.name}</p>
+              {console.log(weaponsItem.elements)}
             </Link>
           ))}
       </div>
