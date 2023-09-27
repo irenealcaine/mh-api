@@ -8,6 +8,7 @@ const Weapons = () => {
   const [weaponsData, setWeaponsData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [selectValue, setSelectValue] = useState(null);
+  const [elementValue, setElementValue] = useState(null);
   const [rangeValue, setRangeValue] = useState(10);
   const [checkValue, setCheckValue] = useState(false);
 
@@ -19,6 +20,9 @@ const Weapons = () => {
           .filter((weapon) => {
             return weapon.type === slug;
           })
+          .filter((weapon) => {
+            return weapon.elements.type === elementValue;
+          })
           .filter(
             (weapon) =>
               rangeValue && weapon.attack.display >= parseInt(rangeValue),
@@ -28,7 +32,7 @@ const Weapons = () => {
           );
         setWeaponsData(filteredWeaponsData);
       });
-  }, [slug, rangeValue, checkValue]);
+  }, [slug, rangeValue, checkValue, elementValue]);
 
   return (
     <div className="weapons">
@@ -52,6 +56,14 @@ const Weapons = () => {
         <option value={8}>8</option>
       </select>
 
+      <select onChange={(e) => setElementValue(e.target.value)}>
+        <option defaultValue hidden>
+          Element damage
+        </option>
+        <option value={"fire"}>Fire</option>
+        <option value={"water"}>Water</option>
+      </select>
+
       <input
         type="range"
         min="10"
@@ -73,6 +85,9 @@ const Weapons = () => {
             selectValue
               ? parseInt(weapon.rarity) === parseInt(selectValue)
               : weapon,
+          )
+          .filter((weapon) =>
+            elementValue ? weapon.elements.type === elementValue : weapon,
           )
           .filter(
             (weapon) =>
