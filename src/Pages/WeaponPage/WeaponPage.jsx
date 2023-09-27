@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./WeaponPage.css"
+import "./WeaponPage.css";
 
 const WeaponPage = () => {
   const [weapon, setWeapon] = useState([]);
@@ -40,11 +40,14 @@ const WeaponPage = () => {
       <p>{weapon.damageType}</p>
       {weapon?.elements?.length >= 1 && (
         <div>
-          <h2>Elements</h2>
+          <h2>Element damage</h2>
           <div>
             {weapon.elements.map((element, index) => (
               <div key={index}>
-                {/* {element} */}
+                <p>
+                  {element.type} <span>{element.damage}</span>{" "}
+                </p>
+
                 {console.log(element)}
               </div>
             ))}

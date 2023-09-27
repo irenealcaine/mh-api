@@ -1,4 +1,8 @@
-.weaponPage img{
+.weaponPage img {
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
+}
+
+.weaponPage p {
+  text-transform: capitalize;
 }
