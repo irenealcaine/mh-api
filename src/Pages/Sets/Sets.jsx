@@ -11,6 +11,7 @@ import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
 const Sets = () => {
   const [sets, setSets] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [rangeValue, setRangeValue] = useState(10);
   const [selectValue, setSelectValue] = useState(null);
   const [filteredSets, setFilteredSets] = useState([]);
 
@@ -28,8 +29,6 @@ const Sets = () => {
     setCurrentPage(currentPage - 1);
   };
 
-  // const maxItems = 100;
-
   useEffect(() => {
     fetch("https://mhw-db.com/armor/sets")
       .then((response) => response.json())
@@ -44,11 +43,16 @@ const Sets = () => {
       .filter((set) =>
         set.name.toLowerCase().includes(inputValue.toLowerCase()),
       )
-      .filter((set) => (selectValue ? set.rank === selectValue : true));
-
+      .filter((set) => (selectValue ? set.rank === selectValue : true))
+      .filter(
+        (set) =>
+          rangeValue &&
+          set.pieces[0].defense.base * set.pieces.length >=
+            parseInt(rangeValue),
+      );
     setFilteredSets(filtered);
     setCurrentPage(1);
-  }, [inputValue, selectValue, sets]);
+  }, [inputValue, selectValue, sets, rangeValue]);
 
   const totalFilteredPages = Math.ceil(filteredSets.length / itemsPerPage);
 
@@ -65,6 +69,15 @@ const Sets = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
+      <input
+        type="range"
+        min="10"
+        max="1000"
+        step="10"
+        value={rangeValue}
+        onChange={(e) => setRangeValue(e.target.value)}
+      />
+      <p>{rangeValue}</p>
       <select onChange={(e) => setSelectValue(e.target.value)}>
         <option defaultValue hidden>
           Rank
@@ -102,6 +115,12 @@ const Sets = () => {
             set.name.toLowerCase().includes(inputValue.toLowerCase()),
           )
           .filter((set) => (selectValue ? set.rank === selectValue : set))
+          .filter(
+            (set) =>
+              rangeValue &&
+              set.pieces[0].defense.base * set.pieces.length >=
+                parseInt(rangeValue),
+          )
           .slice(startIndex, endIndex)
           .map((set, index) => (
             <Link key={index} to={`/sets/${set.id}`} className="set">
@@ -120,8 +139,10 @@ const Sets = () => {
                     </div>
                   ))}
               </div>
+
               <h3>Base defense</h3>
               <p>{set.pieces[0].defense.base * set.pieces.length}</p>
+
               <h3> Resistances</h3>
               <div className="resistances">
                 <div className="resistance">
