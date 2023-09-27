@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import "./LocationPage.css";
 const LocationPage = () => {
   const [locationData, setLocationData] = useState([]);
   const [monsters, setMonsters] = useState([]);
+  const [locationImg, setLocationImg] = useState("");
 
   const { id } = useParams();
 
@@ -12,6 +13,9 @@ const LocationPage = () => {
       .then((response) => response.json())
       .then((locationData) => {
         setLocationData(locationData);
+        setLocationImg(
+          `../../assets/images/locations/${locationData.name}.webp`,
+        );
       });
 
     fetch(`https://mhw-db.com/monsters`)
@@ -29,9 +33,20 @@ const LocationPage = () => {
       });
   }, [id, locationData.id, locationData.name]);
 
+  const renderLocationImage = () => {
+    return locationImg ? (
+      <img
+        className="locationImage"
+        src={require(`../../assets/images/locations/${locationData.name}.webp`)}
+        alt={locationData.name}
+      />
+    ) : null;
+  };
+
   return (
     <div className="locationPage">
       <h1>{locationData.name}</h1>
+      {renderLocationImage()}
       {locationData?.camps?.map((camp, index) => (
         <p key={index}>
           {camp.name}, zone: {camp.zone}

@@ -19,16 +19,22 @@ const Header = () => {
         <Link to={`/`}>
           <img src={logo} className="logo" alt="logo" />
         </Link>
-        <div className={`menu-toggle ${menuActiveClass}`} onClick={toggleMenu}>
-          {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
-        </div>
+
         <ul className={`nav-links ${menuActiveClass}`}>
           {homeItems.map((homeItem) => (
-            <Link key={homeItem} to={`/${homeItem.name}`}>
+            <Link
+              key={homeItem.name}
+              to={`/${homeItem.name}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
               <li>{homeItem.name}</li>
             </Link>
           ))}
         </ul>
+
+        <div className={`menu-toggle ${menuActiveClass}`} onClick={toggleMenu}>
+          {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+        </div>
       </nav>
     </div>
   );

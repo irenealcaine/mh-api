@@ -17,7 +17,9 @@
   justify-content: center;
   text-align: center;
 }
-
+.card h3 {
+  z-index: 10;
+}
 .monsterImg {
   width: 100%;
   position: absolute;
@@ -25,7 +27,7 @@
   transition: all 0.3s ease;
 }
 
-.specie{
+.specie {
   text-transform: capitalize;
 }
 

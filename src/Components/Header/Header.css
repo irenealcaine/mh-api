@@ -21,7 +21,6 @@ ul li {
 
 .menu-toggle {
   display: none;
-
   cursor: pointer;
 }
 
@@ -39,15 +38,17 @@ ul li {
   ul.active {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     padding: 20px 80px;
     position: absolute;
     top: 44px;
+    /* width: 100%; */
     right: 0;
     text-align: center;
     z-index: 10;
-    box-shadow: -8px 8px 22px 0 rgba(31, 38, 135, 0.37);
     background: #ffbd60f1;
+    border-bottom-left-radius: 20px;
+    border-bottom: 1px solid #ffd7a2;
+    border-left: 1px solid #ffd7a2;
   }
 
   .menu-toggle {

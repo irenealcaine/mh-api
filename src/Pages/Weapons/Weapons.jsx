@@ -8,17 +8,33 @@ const Weapons = () => {
   const [weaponsData, setWeaponsData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [selectValue, setSelectValue] = useState(null);
+  const [elementValue, setElementValue] = useState(null);
+  const [rangeValue, setRangeValue] = useState(10);
+  const [checkValue, setCheckValue] = useState(false);
 
   useEffect(() => {
     fetch(`https://mhw-db.com/weapons`)
       .then((response) => response.json())
       .then((weaponsData) => {
-        const filteredWeaponsData = weaponsData.filter((weapon) => {
-          return weapon.type === slug;
-        });
+        const filteredWeaponsData = weaponsData
+          .filter((weapon) => {
+            return weapon.type === slug;
+          })
+          .filter((weapon) =>
+            elementValue
+              ? weapon.elements.some((element) => element.type === elementValue)
+              : weapon,
+          )
+          .filter(
+            (weapon) =>
+              rangeValue && weapon.attack.display >= parseInt(rangeValue),
+          )
+          .filter((weapon) =>
+            checkValue ? weapon.crafting.craftable : weapon,
+          );
         setWeaponsData(filteredWeaponsData);
       });
-  }, [slug]);
+  }, [slug, rangeValue, checkValue, elementValue]);
 
   return (
     <div className="weapons">
@@ -29,9 +45,7 @@ const Weapons = () => {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <select onChange={(e) => setSelectValue(e.target.value)}>
-        <option defaultValue hidden>
-          Rarity
-        </option>
+        <option value={null}>Rarity</option>
         <option value={1}>1</option>
         <option value={2}>2</option>
         <option value={3}>3</option>
@@ -41,7 +55,35 @@ const Weapons = () => {
         <option value={7}>7</option>
         <option value={8}>8</option>
       </select>
+
+      <select onChange={(e) => setElementValue(e.target.value)}>
+        <option value={null}>Element damage</option>
+        <option value={"fire"}>Fire</option>
+        <option value={"water"}>Water</option>
+        <option value={"dragon"}>dragon</option>
+        <option value={"ice"}>ice</option>
+        <option value={"thunder"}>thunder</option>
+        <option value={"blast"}>blast</option>
+        <option value={"poison"}>poison</option>
+        <option value={"sleep"}>sleep</option>
+        <option value={"paralysis"}>paralysis</option>
+      </select>
+
+      <input
+        type="range"
+        min="10"
+        max="1500"
+        step="10"
+        value={rangeValue}
+        onChange={(e) => setRangeValue(e.target.value)}
+      />
+      <p>{rangeValue}</p>
+
+      <input type={"checkbox"} onChange={(e) => setCheckValue(!checkValue)} />
+      <p>Craftable</p>
       <div className="buttonContainer">
+        {console.log(weaponsData)}
+
         {weaponsData
           .filter((weapon) =>
             weapon.name.toLowerCase().includes(inputValue.toLowerCase()),
@@ -51,6 +93,17 @@ const Weapons = () => {
               ? parseInt(weapon.rarity) === parseInt(selectValue)
               : weapon,
           )
+
+          .filter((weapon) =>
+            elementValue
+              ? weapon.elements.some((element) => element.type === elementValue)
+              : weapon,
+          )
+          .filter(
+            (weapon) =>
+              rangeValue && weapon.attack.display >= parseInt(rangeValue),
+          )
+          .filter((weapon) => (checkValue ? weapon.crafting.craftable : weapon))
           .map((weaponsItem, index) => (
             <Link
               key={index}
@@ -61,6 +114,7 @@ const Weapons = () => {
                 <img src={weaponsItem.assets.icon} alt={weaponsItem.name} />
               )}
               <p>{weaponsItem.name}</p>
+              {console.log(weaponsItem.elements)}
             </Link>
           ))}
       </div>
