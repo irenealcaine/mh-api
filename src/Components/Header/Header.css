@@ -41,6 +41,7 @@ ul li {
     padding: 20px 80px;
     position: absolute;
     top: 44px;
+    /* width: 100%; */
     right: 0;
     text-align: center;
     z-index: 10;
