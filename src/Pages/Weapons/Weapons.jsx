@@ -8,17 +8,27 @@ const Weapons = () => {
   const [weaponsData, setWeaponsData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [selectValue, setSelectValue] = useState(null);
+  const [rangeValue, setRangeValue] = useState(10);
+  const [checkValue, setCheckValue] = useState(false);
 
   useEffect(() => {
     fetch(`https://mhw-db.com/weapons`)
       .then((response) => response.json())
       .then((weaponsData) => {
-        const filteredWeaponsData = weaponsData.filter((weapon) => {
-          return weapon.type === slug;
-        });
+        const filteredWeaponsData = weaponsData
+          .filter((weapon) => {
+            return weapon.type === slug;
+          })
+          .filter(
+            (weapon) =>
+              rangeValue && weapon.attack.display >= parseInt(rangeValue),
+          )
+          .filter((weapon) =>
+            checkValue ? weapon.crafting.craftable : weapon,
+          );
         setWeaponsData(filteredWeaponsData);
       });
-  }, [slug]);
+  }, [slug, rangeValue, checkValue]);
 
   return (
     <div className="weapons">
@@ -41,6 +51,19 @@ const Weapons = () => {
         <option value={7}>7</option>
         <option value={8}>8</option>
       </select>
+
+      <input
+        type="range"
+        min="10"
+        max="1500"
+        step="10"
+        value={rangeValue}
+        onChange={(e) => setRangeValue(e.target.value)}
+      />
+      <p>{rangeValue}</p>
+
+      <input type={"checkbox"} onChange={(e) => setCheckValue(!checkValue)} />
+      <p>Craftable</p>
       <div className="buttonContainer">
         {weaponsData
           .filter((weapon) =>
@@ -51,6 +74,11 @@ const Weapons = () => {
               ? parseInt(weapon.rarity) === parseInt(selectValue)
               : weapon,
           )
+          .filter(
+            (weapon) =>
+              rangeValue && weapon.attack.display >= parseInt(rangeValue),
+          )
+          .filter((weapon) => (checkValue ? weapon.crafting.craftable : weapon))
           .map((weaponsItem, index) => (
             <Link
               key={index}

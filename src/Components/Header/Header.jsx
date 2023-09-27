@@ -23,7 +23,7 @@ const Header = () => {
         <ul className={`nav-links ${menuActiveClass}`}>
           {homeItems.map((homeItem) => (
             <Link
-              key={homeItem}
+              key={homeItem.name}
               to={`/${homeItem.name}`}
               onClick={() => setIsMenuOpen(false)}
             >
