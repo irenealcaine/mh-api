@@ -21,7 +21,9 @@ const Weapons = () => {
             return weapon.type === slug;
           })
           .filter((weapon) =>
-            weapon.elements.some((element) => element.type === elementValue),
+            elementValue
+              ? weapon.elements.some((element) => element.type === elementValue)
+              : weapon,
           )
           .filter(
             (weapon) =>
@@ -97,7 +99,9 @@ const Weapons = () => {
           )
 
           .filter((weapon) =>
-            weapon.elements.some((element) => element.type === elementValue),
+            elementValue
+              ? weapon.elements.some((element) => element.type === elementValue)
+              : weapon,
           )
           .filter(
             (weapon) =>
