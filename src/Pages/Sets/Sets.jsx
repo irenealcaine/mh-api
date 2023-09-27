@@ -14,20 +14,11 @@ const Sets = () => {
   const [rangeValue, setRangeValue] = useState(10);
   const [selectValue, setSelectValue] = useState(null);
   const [filteredSets, setFilteredSets] = useState([]);
-
-  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
+  const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const previusPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
 
   useEffect(() => {
     fetch("https://mhw-db.com/armor/sets")
@@ -55,11 +46,41 @@ const Sets = () => {
   }, [inputValue, selectValue, sets, rangeValue]);
 
   const totalFilteredPages = Math.ceil(filteredSets.length / itemsPerPage);
-
   const pages = [];
   for (var i = 1; i <= totalFilteredPages; i++) {
     pages.push(i);
   }
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const previousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const renderPaginationButtons = () => {
+    if (currentPage > 1) {
+      return (
+        <button onClick={previousPage}>
+          <AiOutlineCaretLeft />
+        </button>
+      );
+    }
+    return null;
+  };
+
+  const renderPageNumbers = () => {
+    return pages.map((page) => (
+      <div
+        className={`pageNumber ${page === currentPage && "selected"}`}
+        key={page}
+        onClick={() => setCurrentPage(page)}
+      >
+        {page}
+      </div>
+    ));
+  };
 
   return (
     <div>
@@ -88,20 +109,8 @@ const Sets = () => {
       </select>
 
       <div className="pagesNumber">
-        {currentPage > 1 && (
-          <button onClick={previusPage}>
-            <AiOutlineCaretLeft />
-          </button>
-        )}
-        {pages.map((page, index) => (
-          <div
-            className={`pageNumber ${page === currentPage && "selected"}`}
-            key={index}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </div>
-        ))}
+        {renderPaginationButtons()}
+        {renderPageNumbers()}
         {currentPage < pages.length && (
           <button onClick={nextPage}>
             <AiOutlineCaretRight />
@@ -203,22 +212,8 @@ const Sets = () => {
       </div>
 
       <div className="pagesNumber">
-        {currentPage > 1 && (
-          <button onClick={previusPage}>
-            <AiOutlineCaretLeft />
-          </button>
-        )}
-
-        {pages.map((page, index) => (
-          <div
-            className={`pageNumber ${page === currentPage && "selected"}`}
-            key={index}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </div>
-        ))}
-
+        {renderPaginationButtons()}
+        {renderPageNumbers()}
         {currentPage < pages.length && (
           <button onClick={nextPage}>
             <AiOutlineCaretRight />
