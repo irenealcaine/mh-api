@@ -50,7 +50,7 @@ h1 {
 .inputs {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   width: 100%;
   justify-content: center;
   padding: 20px;
@@ -62,6 +62,7 @@ h1 {
 
 .input {
   display: flex;
+  align-items: center;
   gap: 5px;
   width: 30%;
 }
@@ -70,12 +71,27 @@ h1 {
   width: 100%;
 }
 
+input[type="text"],
+select,
+option {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-family: "Mooli", sans-serif;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+}
+
 @media screen and (max-width: 768px) {
   .inputs {
     flex-direction: column;
-    gap: 10px;
   }
   .input {
     width: 100%;
+    gap: 20px;
   }
 }
