@@ -64,46 +64,62 @@ const Weapons = () => {
   return (
     <div className="weapons">
       <h1>Weapons</h1>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
+      <div className="inputs">
+        <input
+          className="input"
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
 
-      <select onChange={(e) => setSelectValue(e.target.value)}>
-        <option value={""}>Rarity</option>
-        {Array.from({ length: 8 }, (_, i) => (
-          <option key={i} value={i + 1}>
-            {i + 1}
-          </option>
-        ))}
-      </select>
+        <select
+          onChange={(e) => setSelectValue(e.target.value)}
+          className="input"
+        >
+          <option value={""}>Rarity</option>
+          {Array.from({ length: 8 }, (_, i) => (
+            <option key={i} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
 
-      <select onChange={(e) => setElementValue(e.target.value)}>
-        <option value={""}>Element damage</option>
-        <option value={"fire"}>Fire</option>
-        <option value={"water"}>Water</option>
-        <option value={"dragon"}>Dragon</option>
-        <option value={"ice"}>Ice</option>
-        <option value={"thunder"}>Thunder</option>
-        <option value={"blast"}>Blast</option>
-        <option value={"poison"}>Poison</option>
-        <option value={"sleep"}>Sleep</option>
-        <option value={"paralysis"}>Paralysis</option>
-      </select>
-
-      <input
-        type="range"
-        min="10"
-        max="1500"
-        step="10"
-        value={rangeValue}
-        onChange={(e) => setRangeValue(e.target.value)}
-      />
-      <p>{rangeValue}</p>
-
-      <input type={"checkbox"} onChange={(e) => setCheckValue(!checkValue)} />
-      <p>Craftable</p>
+        <select
+          onChange={(e) => setElementValue(e.target.value)}
+          className="input"
+        >
+          <option value={""}>Element damage</option>
+          <option value={"fire"}>Fire</option>
+          <option value={"water"}>Water</option>
+          <option value={"dragon"}>Dragon</option>
+          <option value={"ice"}>Ice</option>
+          <option value={"thunder"}>Thunder</option>
+          <option value={"blast"}>Blast</option>
+          <option value={"poison"}>Poison</option>
+          <option value={"sleep"}>Sleep</option>
+          <option value={"paralysis"}>Paralysis</option>
+        </select>
+        <div className="input">
+          <p>Damage</p>
+          <input
+            className="range"
+            type="range"
+            min="10"
+            max="1500"
+            step="10"
+            value={rangeValue}
+            onChange={(e) => setRangeValue(e.target.value)}
+          />
+          <p>{rangeValue}</p>
+        </div>
+        <div className="input">
+          <p>Craftable</p>
+          <input
+            type={"checkbox"}
+            onChange={(e) => setCheckValue(!checkValue)}
+          />
+        </div>
+      </div>
 
       {renderLoader()}
 
