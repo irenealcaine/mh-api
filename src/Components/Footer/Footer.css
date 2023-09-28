@@ -9,6 +9,7 @@
 }
 .footer a {
   transition: all 0.2s ease;
+  display: flex;
 }
 .footer a:hover {
   color: #ffe6c6;
