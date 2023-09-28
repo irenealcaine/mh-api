@@ -164,29 +164,38 @@ const Sets = () => {
   return (
     <div>
       <h1>Sets</h1>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <input
-        type="range"
-        min="10"
-        max="1000"
-        step="10"
-        value={rangeValue}
-        onChange={(e) => setRangeValue(e.target.value)}
-      />
-      <p>{rangeValue}</p>
-      <select
-        onChange={(e) => setSelectValue(e.target.value)}
-        value={selectValue || ""}
-      >
-        <option value={""}>Rank</option>
-        <option value={"low"}>Low</option>
-        <option value={"high"}>High</option>
-        <option value={"master"}>Master</option>
-      </select>
+      <div className="inputs">
+        <input
+          className="input"
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <div className="input">
+          <p>Defense</p>
+          <input
+            className="range"
+            type="range"
+            min="10"
+            max="1000"
+            step="5"
+            value={rangeValue}
+            onChange={(e) => setRangeValue(e.target.value)}
+          />
+          <p>{rangeValue}</p>
+        </div>
+
+        <select
+          className="input"
+          onChange={(e) => setSelectValue(e.target.value)}
+          value={selectValue || ""}
+        >
+          <option value={""}>Rank</option>
+          <option value={"low"}>Low</option>
+          <option value={"high"}>High</option>
+          <option value={"master"}>Master</option>
+        </select>
+      </div>
 
       <div className="pagesNumber">
         {renderPaginationButtons()}

@@ -72,11 +72,36 @@
   text-shadow: 1px 1px 2px #00fa;
 }
 
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  gap: 20px;
+  width: 30%;
+}
+
+.range {
+  width: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .pieceImg {
     width: 100px;
   }
   .set {
+    width: 100%;
+  }
+  .inputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .input {
     width: 100%;
   }
 }
