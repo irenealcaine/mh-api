@@ -47,11 +47,13 @@ const LocationPage = () => {
     <div className="locationPage">
       <h1>{locationData.name}</h1>
       {renderLocationImage()}
-      {locationData?.camps?.map((camp, index) => (
-        <p key={index}>
-          {camp.name}, zone: {camp.zone}
-        </p>
-      ))}
+      <ul className="camps">
+        {locationData?.camps?.map((camp, index) => (
+          <li key={index}>
+            <span>{camp.name}</span>, zone: {camp.zone}
+          </li>
+        ))}
+      </ul>
 
       {monsters.length >= 1 && (
         <div>

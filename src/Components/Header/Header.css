@@ -10,12 +10,12 @@ nav {
   margin: -10px;
 }
 
-ul {
+.header ul {
   display: flex;
   gap: 25px;
   list-style: none;
 }
-ul li {
+.header ul li {
   text-transform: capitalize;
   color: #502d00;
   font-weight: 700;
@@ -23,7 +23,7 @@ ul li {
   transition: all 0.2s ease;
 }
 
-ul li:hover {
+.header ul li:hover {
   text-decoration: underline;
 }
 
@@ -39,11 +39,11 @@ ul li:hover {
 }
 
 @media screen and (max-width: 768px) {
-  ul {
+  .header ul {
     display: none;
   }
 
-  ul.active {
+  .header ul.active {
     display: flex;
     flex-direction: column;
     padding: 20px 80px;

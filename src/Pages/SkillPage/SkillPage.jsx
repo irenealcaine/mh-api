@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./SkillPage.css";
 
 const SkillPage = () => {
   const [skillData, setSkillData] = useState([]);
@@ -48,11 +49,14 @@ const SkillPage = () => {
     <div className="skillPage">
       <h1>{skillData?.name}</h1>
       <p>{skillData?.description}</p>
-      {skillData?.ranks?.map((rank, index) => (
-        <p key={index}>
-          Rank {rank.level}: {rank.description}
-        </p>
-      ))}
+      <ul className="ranks">
+        {skillData?.ranks?.map((rank, index) => (
+          <li className="rank" key={index}>
+            <span>Rank {rank.level}:</span> {rank.description}
+          </li>
+        ))}
+      </ul>
+
       {armorData?.length >= 1 && (
         <div>
           <h2>Armor</h2>
