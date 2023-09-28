@@ -7,6 +7,7 @@ import ice from "../../assets/images/icons/ice.png";
 import thunder from "../../assets/images/icons/thunder.png";
 import dragon from "../../assets/images/icons/dragon.png";
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from "react-icons/ai";
+import Loader from "../../Components/Loader/Loader";
 
 const Sets = () => {
   const [sets, setSets] = useState([]);
@@ -45,7 +46,7 @@ const Sets = () => {
         (set) =>
           rangeValue &&
           set.pieces[0].defense.base * set.pieces.length >=
-          parseInt(rangeValue),
+            parseInt(rangeValue),
       );
     setFilteredSets(filtered);
     setCurrentPage(1);
@@ -155,12 +156,7 @@ const Sets = () => {
 
   const renderLoader = () => {
     if (isLoading) {
-      return (
-        <div className="loader">
-
-          Loading...
-        </div>
-      );
+      return <Loader />;
     }
     return null;
   };
