@@ -19,6 +19,10 @@
   width: 200px;
 }
 
+.setPiece h3 {
+  margin-top: 10px;
+}
+
 .setSkillName {
   text-decoration: underline;
   font-weight: 700;
