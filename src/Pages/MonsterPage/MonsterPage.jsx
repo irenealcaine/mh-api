@@ -12,6 +12,7 @@ import sleepIcon from "../../assets/images/icons/sleep.png";
 import paralysisIcon from "../../assets/images/icons/paralysis.png";
 import stunIcon from "../../assets/images/icons/stun.png";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const MonsterPage = () => {
   const [monster, setMonster] = useState([]);
@@ -54,6 +55,7 @@ const MonsterPage = () => {
 
   return (
     <div className="monsterPage">
+      <BackButton to={"/monsters"} value={"All monsters"} />
       <h1>{monster.name}</h1>
       <p className="specie">{monster.species}</p>
       {renderMonsterImage()}

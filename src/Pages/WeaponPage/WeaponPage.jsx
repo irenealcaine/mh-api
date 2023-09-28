@@ -11,11 +11,15 @@ import poisonIcon from "../../assets/images/icons/poison.png";
 import sleepIcon from "../../assets/images/icons/sleep.png";
 import paralysisIcon from "../../assets/images/icons/paralysis.png";
 import stunIcon from "../../assets/images/icons/stun.png";
+import Loader from "../../Components/Loader/Loader";
+
 
 const WeaponPage = () => {
   const [weapon, setWeapon] = useState([]);
   const [weapons, setWeapons] = useState([]);
   const [previous, setPrevious] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const { id } = useParams();
 
   const icons = {
@@ -47,9 +51,22 @@ const WeaponPage = () => {
             (prevWeapon) => prevWeapon.id === weapon?.crafting?.previous,
           );
           setPrevious(previousWeapon);
+          setIsLoading(false);
+
         }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
   }, [id, previous, weapons, weapon?.crafting?.previous, weapon?.crafting]);
+
+  const renderLoader = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+    return null;
+  };
 
   return (
     <div className="weaponPage">
@@ -94,13 +111,7 @@ const WeaponPage = () => {
         </div>
       ) : (
         <div>
-          <h2>Upgrade from</h2>
-          <Link
-            className="button"
-            to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}
-          >
-            {previous?.name}
-          </Link>
+
 
           <h2>Upgrade items</h2>
           <div className="buttonContainer">
@@ -114,8 +125,25 @@ const WeaponPage = () => {
               </Link>
             ))}
           </div>
+
+          {!isLoading && (
+            <div>
+              <h2>Upgrade from</h2>
+              <Link
+                className="button"
+                to={`/weapons/${previous?.type}/${weapon?.crafting?.previous}`}
+              >
+                {previous?.name}
+              </Link>
+            </div>
+          )}
+
+
         </div>
       )}
+
+      {renderLoader()}
+
     </div>
   );
 };

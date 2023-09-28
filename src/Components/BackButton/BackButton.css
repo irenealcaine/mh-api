@@ -1,0 +1,32 @@
+.backButton{
+  display: flex;
+  align-items: center;
+  gap:10px;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid #fea427;
+  color: #a35f00;
+  margin-bottom: 20px;
+  transition: all .3s ease;
+  position: relative;
+}
+
+.backButton:hover{
+  background-color: #fea427;
+  color: #3d2400;
+  padding-left: 25px ;
+}
+
+.backButton span{
+  display: flex;
+  transition: all .3s ease;
+  position: absolute;
+  opacity: 0;
+
+}
+
+.backButton:hover span{
+transform: translateX(-20px);
+opacity: 1
+}
