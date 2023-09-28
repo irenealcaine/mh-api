@@ -30,9 +30,6 @@
   flex-direction: column;
 }
 
-.setMaterialItem {
-}
-
 @media screen and (max-width: 1000px) {
   .setPieces {
     grid-template-columns: repeat(2, 1fr);
