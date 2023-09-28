@@ -5,7 +5,10 @@
   gap: 10px;
 }
 
-.neededArmor,
-.monsterItem {
+.itemPage h2 {
+  margin-top: 15px;
+}
 
+.itemPage h3 {
+  margin-left: 10px;
 }
