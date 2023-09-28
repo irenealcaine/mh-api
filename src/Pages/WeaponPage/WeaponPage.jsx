@@ -71,7 +71,7 @@ const WeaponPage = () => {
 
   return (
     <div className="weaponPage">
-      <BackButton to={`/weapon/${weapon.type}`} value={`All ${weapon.type}`} />
+      <BackButton to={`/weapons/${weapon.type}`} value={`All ${weapon.type}`} />
 
       <h1>{weapon.name}</h1>
       <img src={weapon?.assets?.image} alt={weapon.name} loading="lazy" />
