@@ -9,7 +9,7 @@
 }
 
 .icon {
-  width: 20px;
+  width: 25px;
 }
 
 .rewards {
@@ -43,5 +43,5 @@
 
 .monsterPage h3 {
   text-transform: capitalize;
-  margin-top: 5px;
+  margin-left: 10px;
 }

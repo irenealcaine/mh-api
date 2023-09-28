@@ -89,26 +89,33 @@ const MonsterPage = () => {
               ))}
           </div>
 
-          {monster.resistances
-            .filter((resistance) => resistance.condition !== null)
-            .slice(0, 1)
-            .map((resistance, index) => (
-              <div key={index}>
-                <h3>{resistance.condition}</h3>
+          {monster.resistances.some((resistance) => resistance.condition !== null) && (
+            <div>
+              {monster.resistances
+                .filter((resistance) => resistance.condition !== null)
+                .slice(0, 1)
+                .map((resistance, index) => (
+                  <div key={index}>
+                    <h3>{resistance.condition}</h3>
+                  </div>
+                ))}
+
+              <div className="weaknesses">
+                {monster.resistances
+                  .filter((resistance) => resistance.condition !== null)
+                  .map((resistance, index) => (
+                    <img
+                      key={index}
+                      src={icons[resistance.element]}
+                      alt={resistance.element}
+                      className="icon"
+                    />
+                  ))}
               </div>
-            ))}
-          <div className="weaknesses">
-            {monster.resistances
-              .filter((resistance) => resistance.condition !== null)
-              .map((resistance, index) => (
-                <img
-                  key={index}
-                  src={icons[resistance.element]}
-                  alt={resistance.element}
-                  className="icon"
-                />
-              ))}
-          </div>
+            </div>
+          )}
+
+
         </div>
       )}
 
@@ -143,43 +150,42 @@ const MonsterPage = () => {
           {monster.weaknesses.some(
             (weakness) => weakness.condition !== null,
           ) && (
-            <div>
-              {console.log(monster.weaknesses)}
-              {monster.weaknesses
-                .filter((weakness) => weakness.condition !== null)
-                .slice(0, 1)
-                .map((weakness, index) => (
-                  <div key={index}>
-                    <h3>{weakness.condition}</h3>
-                  </div>
-                ))}
-
-              <div className="weaknesses">
+              <div>
                 {monster.weaknesses
                   .filter((weakness) => weakness.condition !== null)
+                  .slice(0, 1)
                   .map((weakness, index) => (
-                    <div key={index} className="weakness">
-                      <img
-                        src={icons[weakness.element]}
-                        alt={weakness.element}
-                        className="icon"
-                      />
-                      <div className="starsContainer">
-                        {Array.from({ length: 3 }, (_, i) => (
-                          <span key={i} className="star">
-                            {i < weakness.stars ? (
-                              <AiFillStar />
-                            ) : (
-                              <AiOutlineStar />
-                            )}
-                          </span>
-                        ))}
-                      </div>
+                    <div key={index}>
+                      <h3>{weakness.condition}</h3>
                     </div>
                   ))}
+
+                <div className="weaknesses">
+                  {monster.weaknesses
+                    .filter((weakness) => weakness.condition !== null)
+                    .map((weakness, index) => (
+                      <div key={index} className="weakness">
+                        <img
+                          src={icons[weakness.element]}
+                          alt={weakness.element}
+                          className="icon"
+                        />
+                        <div className="starsContainer">
+                          {Array.from({ length: 3 }, (_, i) => (
+                            <span key={i} className="star">
+                              {i < weakness.stars ? (
+                                <AiFillStar />
+                              ) : (
+                                <AiOutlineStar />
+                              )}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       )}
 
