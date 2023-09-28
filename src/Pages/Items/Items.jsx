@@ -30,14 +30,11 @@ const Items = () => {
           onChange={(e) => setSelectValue(e.target.value)}
           className="input"
         >
-          <option defaultValue hidden>
-            Rarity
-          </option>
-          <option value={1}>1</option>
+          <option value={""}>Rarity</option>
+          {/* <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
-          <option value={5}>5</option>
           <option value={5}>5</option>
           <option value={6}>6</option>
           <option value={7}>7</option>
@@ -45,7 +42,12 @@ const Items = () => {
           <option value={9}>9</option>
           <option value={10}>10</option>
           <option value={11}>11</option>
-          <option value={12}>12</option>
+          <option value={12}>12</option> */}
+          {[...Array(13).keys()].map((value) => (
+            <option key={value} value={value + 1}>
+              {value + 1}
+            </option>
+          ))}
         </select>
       </div>
 
