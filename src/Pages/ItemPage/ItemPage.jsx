@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ItemPage.css";
+import Loader from "../../Components/Loader/Loader";
 
 const ItemPage = () => {
   const [itemData, setItemData] = useState([]);
@@ -10,19 +11,120 @@ const ItemPage = () => {
   const [upgradeData, setUpgradeData] = useState([]);
   const [armor, setArmor] = useState([]);
   const [monsters, setMonsters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const { id } = useParams();
 
-  useEffect(() => {
-    fetch(`https://mhw-db.com/items/${id}`)
-      .then((response) => response.json())
-      .then((itemData) => {
-        setItemData(itemData);
-      });
+  // useEffect(() => {
+  //   fetch(`https://mhw-db.com/items/${id}`)
+  //     .then((response) => response.json())
+  //     .then((itemData) => {
+  //       setItemData(itemData);
 
-    fetch(`https://mhw-db.com/armor`)
-      .then((response) => response.json())
-      .then((armorData) => {
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+
+  //   fetch(`https://mhw-db.com/armor`)
+  //     .then((response) => response.json())
+  //     .then((armorData) => {
+  //       const filteredArmorData = armorData.filter((armor) => {
+  //         for (const material of armor.crafting.materials) {
+  //           if (material.item.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setArmor(filteredArmorData);
+  //     });
+
+  //   fetch(`https://mhw-db.com/monsters`)
+  //     .then((response) => response.json())
+  //     .then((monstersData) => {
+  //       const filteredMonstersData = monstersData.filter((monster) => {
+  //         for (const reward of monster.rewards) {
+  //           if (reward.item.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setMonsters(filteredMonstersData);
+  //     });
+
+  //   fetch(`https://mhw-db.com/ailments`)
+  //     .then((response) => response.json())
+  //     .then((recoveryData) => {
+  //       const filteredRecoveryData = recoveryData.filter((ailment) => {
+  //         for (const item of ailment.recovery.items) {
+  //           if (item.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setRecoveryData(filteredRecoveryData);
+  //     });
+
+  //   fetch(`https://mhw-db.com/ailments`)
+  //     .then((response) => response.json())
+  //     .then((potectionData) => {
+  //       const filteredProtectionData = potectionData.filter((ailment) => {
+  //         for (const item of ailment.protection.items) {
+  //           if (item.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setProtectionData(filteredProtectionData);
+  //     });
+
+  //   fetch(`https://mhw-db.com/weapons`)
+  //     .then((response) => response.json())
+  //     .then((craftingData) => {
+  //       const filteredCraftingData = craftingData.filter((weapon) => {
+  //         for (const material of weapon?.crafting?.craftingMaterials) {
+  //           if (material?.item?.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setCraftingData(filteredCraftingData);
+  //     }).catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //       setIsLoading(false);
+  //     });
+
+  //   fetch(`https://mhw-db.com/weapons`)
+  //     .then((response) => response.json())
+  //     .then((upgradeData) => {
+  //       const filteredUpgradeData = upgradeData.filter((weapon) => {
+  //         for (const material of weapon?.crafting?.upgradeMaterials) {
+  //           if (material?.item?.name === itemData.name) {
+  //             return true;
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //       setUpgradeData(filteredUpgradeData);
+  //     });
+  // }, [id, itemData.id, itemData.name]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`https://mhw-db.com/items/${id}`).then((response) => response.json()),
+      fetch(`https://mhw-db.com/armor`).then((response) => response.json()),
+      fetch(`https://mhw-db.com/monsters`).then((response) => response.json()),
+      fetch(`https://mhw-db.com/ailments`).then((response) => response.json()),
+      fetch(`https://mhw-db.com/weapons`).then((response) => response.json()),
+    ])
+      .then(([itemData, armorData, monstersData, recoveryData, craftingData]) => {
+        setItemData(itemData);
         const filteredArmorData = armorData.filter((armor) => {
           for (const material of armor.crafting.materials) {
             if (material.item.name === itemData.name) {
@@ -32,11 +134,6 @@ const ItemPage = () => {
           return false;
         });
         setArmor(filteredArmorData);
-      });
-
-    fetch(`https://mhw-db.com/monsters`)
-      .then((response) => response.json())
-      .then((monstersData) => {
         const filteredMonstersData = monstersData.filter((monster) => {
           for (const reward of monster.rewards) {
             if (reward.item.name === itemData.name) {
@@ -46,11 +143,6 @@ const ItemPage = () => {
           return false;
         });
         setMonsters(filteredMonstersData);
-      });
-
-    fetch(`https://mhw-db.com/ailments`)
-      .then((response) => response.json())
-      .then((recoveryData) => {
         const filteredRecoveryData = recoveryData.filter((ailment) => {
           for (const item of ailment.recovery.items) {
             if (item.name === itemData.name) {
@@ -60,12 +152,7 @@ const ItemPage = () => {
           return false;
         });
         setRecoveryData(filteredRecoveryData);
-      });
-
-    fetch(`https://mhw-db.com/ailments`)
-      .then((response) => response.json())
-      .then((potectionData) => {
-        const filteredProtectionData = potectionData.filter((ailment) => {
+        const filteredProtectionData = recoveryData.filter((ailment) => {
           for (const item of ailment.protection.items) {
             if (item.name === itemData.name) {
               return true;
@@ -74,11 +161,6 @@ const ItemPage = () => {
           return false;
         });
         setProtectionData(filteredProtectionData);
-      });
-
-    fetch(`https://mhw-db.com/weapons`)
-      .then((response) => response.json())
-      .then((craftingData) => {
         const filteredCraftingData = craftingData.filter((weapon) => {
           for (const material of weapon?.crafting?.craftingMaterials) {
             if (material?.item?.name === itemData.name) {
@@ -88,12 +170,7 @@ const ItemPage = () => {
           return false;
         });
         setCraftingData(filteredCraftingData);
-      });
-
-    fetch(`https://mhw-db.com/weapons`)
-      .then((response) => response.json())
-      .then((upgradeData) => {
-        const filteredUpgradeData = upgradeData.filter((weapon) => {
+        const filteredUpgradeData = craftingData.filter((weapon) => {
           for (const material of weapon?.crafting?.upgradeMaterials) {
             if (material?.item?.name === itemData.name) {
               return true;
@@ -102,19 +179,41 @@ const ItemPage = () => {
           return false;
         });
         setUpgradeData(filteredUpgradeData);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
-  }, [id, itemData.id, itemData.name]);
+  }, [id, itemData.name]);
+
+  const renderLoader = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+    return null;
+  };
 
   return (
     <div className="itemPage">
       <h1> {itemData.name}</h1>
-      <p> {itemData.description}</p>
-      <h2>Value</h2>
-      <p>{itemData.value}</p>
-      <h2>Rarity</h2>
-      <p>{itemData.rarity}</p>
-      <h2>Carry limit</h2>
-      <p>{itemData.carryLimit}</p>
+      {
+        !isLoading && (
+          <div>
+            <p> {itemData.description}</p>
+            <h2>Value</h2>
+            <p>{itemData.value}</p>
+            <h2>Rarity</h2>
+            <p>{itemData.rarity}</p>
+            <h2>Carry limit</h2>
+            <p>{itemData.carryLimit}</p>
+          </div>
+
+        )
+      }
+
+
+
 
       {monsters.length >= 1 && (
         <div>
@@ -229,6 +328,9 @@ const ItemPage = () => {
           )}
         </div>
       ) : null}
+
+      {renderLoader()}
+
     </div>
   );
 };

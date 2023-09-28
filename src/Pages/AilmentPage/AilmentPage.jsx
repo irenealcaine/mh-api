@@ -36,7 +36,7 @@ const AilmentPage = () => {
       <p>{ailmentData.description}</p>
 
       {ailmentData?.recovery?.actions.length >= 1 ||
-      ailmentData?.recovery?.items.length >= 1 ? (
+        ailmentData?.recovery?.items.length >= 1 ? (
         <div>
           <h2>Recovery</h2>
           {ailmentData?.recovery?.actions.length >= 1 && (
@@ -44,7 +44,7 @@ const AilmentPage = () => {
               <h3>Actions</h3>
               <div>
                 {ailmentData.recovery.actions.map((action, index) => (
-                  <span key={index}>{action}</span>
+                  <span key={index} className="action">{action}</span>
                 ))}
               </div>
             </div>
@@ -66,7 +66,7 @@ const AilmentPage = () => {
       ) : null}
 
       {ailmentData?.protection?.items.length >= 1 ||
-      ailmentData?.protection?.skills.length >= 1 ? (
+        ailmentData?.protection?.skills.length >= 1 ? (
         <div>
           <h2>Protection</h2>
 

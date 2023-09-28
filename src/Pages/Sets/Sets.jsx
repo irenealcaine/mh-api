@@ -46,7 +46,7 @@ const Sets = () => {
         (set) =>
           rangeValue &&
           set.pieces[0].defense.base * set.pieces.length >=
-            parseInt(rangeValue),
+          parseInt(rangeValue),
       );
     setFilteredSets(filtered);
     setCurrentPage(1);

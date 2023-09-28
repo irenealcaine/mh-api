@@ -1,5 +1,6 @@
 .rank {
   text-transform: capitalize;
+  margin-bottom: 10px;
 }
 .setPieces {
   display: grid;

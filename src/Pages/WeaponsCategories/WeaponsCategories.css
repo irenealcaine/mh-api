@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 20px;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -46,7 +46,6 @@
 @media screen and (max-width: 1200px) {
   .weaponsContainer {
     grid-template-columns: repeat(5, 1fr);
-    width: 90%;
   }
 }
 
@@ -62,9 +61,3 @@
   }
 }
 
-@media screen and (max-width: 400px) {
-  .weaponsContainer {
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}

@@ -5,3 +5,8 @@
 .ailmentPage h3 {
   margin-left: 10px;
 }
+
+.ailmentPage .action{
+  text-transform: capitalize;
+  margin-left: 10px;
+}
