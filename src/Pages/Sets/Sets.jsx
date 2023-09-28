@@ -178,10 +178,11 @@ const Sets = () => {
         onChange={(e) => setRangeValue(e.target.value)}
       />
       <p>{rangeValue}</p>
-      <select onChange={(e) => setSelectValue(e.target.value)}>
-        <option defaultValue hidden>
-          Rank
-        </option>
+      <select
+        onChange={(e) => setSelectValue(e.target.value)}
+        value={selectValue || ""}
+      >
+        <option value={""}>Rank</option>
         <option value={"low"}>Low</option>
         <option value={"high"}>High</option>
         <option value={"master"}>Master</option>
