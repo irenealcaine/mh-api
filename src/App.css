@@ -46,3 +46,82 @@ h1 {
   gap: 10px;
   padding: 5px;
 }
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ffaf3f33;
+  border: 1px solid #ffaf3f;
+  border-radius: 20px;
+  margin: 20px 10px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 30%;
+}
+
+.range {
+  width: 100%;
+}
+
+input[type="text"],
+select {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-family: "Mooli", sans-serif;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+}
+
+select * {
+  background-color: #ffdcac;
+  padding: 5px 10px;
+}
+
+input[type="range"] {
+  appearance: none;
+  background: #ffe7c5;
+  height: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background-color: #683d00;
+  height: 20px;
+  width: 3px;
+  border-radius: 100px;
+  box-shadow: 0 0 0 3px #683d0033;
+}
+
+input[type="checkbox"] {
+  outline: none;
+  border: none;
+}
+
+input:checked {
+  box-shadow: 0 0 0 3px #683d0033;
+  accent-color:  #683d0033; 
+}
+
+@media screen and (max-width: 768px) {
+  .inputs {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .input {
+    width: 100%;
+    gap: 20px;
+  }
+}
