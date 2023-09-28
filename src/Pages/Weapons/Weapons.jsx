@@ -80,7 +80,7 @@ const Weapons = () => {
       </select>
 
       <select onChange={(e) => setElementValue(e.target.value)}>
-        <option value={null}>Element damage</option>
+        <option value={""}>Element damage</option>
         <option value={"fire"}>Fire</option>
         <option value={"water"}>Water</option>
         <option value={"dragon"}>Dragon</option>
