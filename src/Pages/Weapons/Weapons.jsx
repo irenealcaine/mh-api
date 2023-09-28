@@ -71,7 +71,7 @@ const Weapons = () => {
       />
 
       <select onChange={(e) => setSelectValue(e.target.value)}>
-        <option value={null}>Rarity</option>
+        <option value={""}>Rarity</option>
         {Array.from({ length: 8 }, (_, i) => (
           <option key={i} value={i + 1}>
             {i + 1}
