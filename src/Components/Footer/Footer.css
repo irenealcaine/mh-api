@@ -1,7 +1,15 @@
 .footer {
   display: flex;
   padding: 10px;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   justify-content: flex-end;
+  color: #502d00;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    font-size: 20px;
+  }
 }

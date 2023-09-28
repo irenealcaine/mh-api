@@ -6,9 +6,27 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <FiGithub />
-      <HiOutlineMail />
-      <TbWorldWww />
+      <a
+        href={"https://github.com/irenealcaine"}
+        target={"_blank"}
+        rel={"norreferer noreferrer"}
+      >
+        <FiGithub />
+      </a>
+      <a
+        href={"mailto:irenealcainealvarez@gmail.com?Subject=Let's talk!"}
+        target={"_blank"}
+        rel={"norreferer noreferrer"}
+      >
+        <HiOutlineMail />
+      </a>
+      <a
+        href={"https://irenealcainealvarez.es"}
+        target={"_blank"}
+        rel={"norreferer noreferrer"}
+      >
+        <TbWorldWww />
+      </a>
     </div>
   );
 };
