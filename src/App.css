@@ -111,9 +111,26 @@ input[type="checkbox"] {
 }
 
 input:checked {
-  
   box-shadow: 0 0 0 3px #683d0033;
   accent-color: #683d0033;
+}
+
+button {
+  background-color: #683d004d;
+  border: none;
+  cursor: pointer;
+  /* padding: 5px; */
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #683d009f;
 }
 
 @media screen and (max-width: 768px) {
