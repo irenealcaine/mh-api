@@ -30,6 +30,7 @@ const Locations = () => {
                 `../../assets/images/locations/${location.name}.webp`,
               )}
               alt={location.name}
+              loading="lazy"
             />
           </Link>
         ))}

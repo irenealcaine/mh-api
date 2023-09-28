@@ -54,7 +54,7 @@ const WeaponPage = () => {
   return (
     <div className="weaponPage">
       <h1>{weapon.name}</h1>
-      <img src={weapon?.assets?.image} alt={weapon.name} />
+      <img src={weapon?.assets?.image} alt={weapon.name} loading="lazy" />
       <h2>Rarity</h2>
       <p>{weapon.rarity}</p>
       <h2>Damage</h2>
@@ -74,6 +74,7 @@ const WeaponPage = () => {
                   src={icons[element.type]}
                   alt={element.type}
                   className="icon"
+                  loading="lazy"
                 />
               </div>
             ))}

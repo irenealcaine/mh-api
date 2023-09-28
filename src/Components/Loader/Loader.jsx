@@ -5,7 +5,7 @@ const Loader = () => {
     <div className="loader">
       <p className="loading">Loading...</p>
       <p>This may take a while, in the meantime check out this good boy...</p>
-      <img src={loader} alt={"loader"} />
+      <img src={loader} alt={"loader"} loading="lazy" />
     </div>
   );
 };

@@ -9,6 +9,7 @@ const Main = ({ children }) => {
         className="bg"
         src="https://i.redd.it/cknepx23usg41.png"
         alt="background"
+        loading="lazy"
       />
       <div className="bg2"></div>
       <Header />

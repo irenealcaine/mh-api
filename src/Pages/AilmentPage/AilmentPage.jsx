@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./AilmentPage.css";
+import Loader from "../../Components/Loader/Loader";
 
 const AilmentPage = () => {
   const [ailmentData, setAilmentData] = useState([]);
   const [monsters, setMonsters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const { id } = useParams();
 
@@ -27,8 +30,21 @@ const AilmentPage = () => {
           return false;
         });
         setMonsters(filteredMonstersData);
+        setIsLoading(false);
+
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
   }, [id, ailmentData.id, ailmentData.name]);
+
+  const renderLoader = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+    return null;
+  };
 
   return (
     <div className="ailmentPage">
@@ -118,6 +134,9 @@ const AilmentPage = () => {
           </div>
         </div>
       )}
+
+      {renderLoader()}
+
     </div>
   );
 };

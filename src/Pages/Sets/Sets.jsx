@@ -102,6 +102,7 @@ const Sets = () => {
                     className="pieceImg"
                     src={piece.assets.imageMale}
                     alt={piece.name}
+                    loading="lazy"
                   />
                 )}
               </div>
@@ -114,32 +115,32 @@ const Sets = () => {
         <h3> Resistances</h3>
         <div className="resistances">
           <div className="resistance">
-            <img src={fire} alt="fire" className="resistanceIcon" />
+            <img src={fire} alt="fire" className="resistanceIcon" loading="lazy" />
             <p className={set.pieces[0].resistances.fire < 0 && "negative"}>
               {" "}
               {set.pieces[0].resistances.fire * set.pieces.length}
             </p>
           </div>
           <div className="resistance">
-            <img src={water} alt="water" className="resistanceIcon" />
+            <img src={water} alt="water" className="resistanceIcon" loading="lazy" />
             <p className={set.pieces[0].resistances.water < 0 && "negative"}>
               {set.pieces[0].resistances.water * set.pieces.length}
             </p>
           </div>
           <div className="resistance">
-            <img src={ice} alt="ice" className="resistanceIcon" />
+            <img src={ice} alt="ice" className="resistanceIcon" loading="lazy" />
             <p className={set.pieces[0].resistances.ice < 0 && "negative"}>
               {set.pieces[0].resistances.ice * set.pieces.length}
             </p>
           </div>
           <div className="resistance">
-            <img src={thunder} alt="thunder" className="resistanceIcon" />
+            <img src={thunder} alt="thunder" className="resistanceIcon" loading="lazy" />
             <p className={set.pieces[0].resistances.thunder < 0 && "negative"}>
               {set.pieces[0].resistances.thunder * set.pieces.length}
             </p>
           </div>
           <div className="resistance">
-            <img src={dragon} alt="dragon" className="resistanceIcon" />
+            <img src={dragon} alt="dragon" className="resistanceIcon" loading="lazy" />
             <p className={set.pieces[0].resistances.dragon < 0 && "negative"}>
               {set.pieces[0].resistances.dragon * set.pieces.length}
             </p>

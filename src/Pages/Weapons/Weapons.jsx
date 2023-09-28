@@ -50,8 +50,8 @@ const Weapons = () => {
 
   const filteredByRarity = selectValue
     ? filteredWeapons.filter(
-        (weapon) => parseInt(weapon.rarity) === parseInt(selectValue),
-      )
+      (weapon) => parseInt(weapon.rarity) === parseInt(selectValue),
+    )
     : filteredWeapons;
 
   const renderLoader = () => {
@@ -132,7 +132,7 @@ const Weapons = () => {
             className="button weapon"
           >
             {weapon.assets?.icon && (
-              <img src={weapon.assets.icon} alt={weapon.name} />
+              <img src={weapon.assets.icon} alt={weapon.name} loading="lazy" />
             )}
             <p>{weapon.name}</p>
           </Link>

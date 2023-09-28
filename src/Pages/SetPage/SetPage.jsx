@@ -35,6 +35,7 @@ const SetPage = () => {
                   className="setPieceImg"
                   src={piece.assets.imageMale}
                   alt={piece.name}
+                  loading="lazy"
                 />
               )}
 
@@ -43,35 +44,36 @@ const SetPage = () => {
               <h3>Resistances</h3>
               <div className="resistances">
                 <div className="resistance">
-                  <img src={fire} alt="fire" className="resistanceIcon" />
+                  <img src={fire} alt="fire" className="resistanceIcon"
+                    loading="lazy" />
                   <p className={piece.resistances.fire < 0 && "negative"}>
                     {piece.resistances.fire}
                   </p>
                 </div>
 
                 <div className="resistance">
-                  <img src={water} alt="water" className="resistanceIcon" />
+                  <img src={water} alt="water" className="resistanceIcon" loading="lazy" />
                   <p className={piece.resistances.water < 0 && "negative"}>
                     {piece.resistances.water}
                   </p>
                 </div>
 
                 <div className="resistance">
-                  <img src={ice} alt="ice" className="resistanceIcon" />
+                  <img src={ice} alt="ice" className="resistanceIcon" loading="lazy" />
                   <p className={piece.resistances.ice < 0 && "negative"}>
                     {piece.resistances.ice}
                   </p>
                 </div>
 
                 <div className="resistance">
-                  <img src={thunder} alt="thunder" className="resistanceIcon" />
+                  <img src={thunder} alt="thunder" className="resistanceIcon" loading="lazy" />
                   <p className={piece.resistances.thunder < 0 && "negative"}>
                     {piece.resistances.thunder}
                   </p>
                 </div>
 
                 <div className="resistance">
-                  <img src={dragon} alt="dragon" className="resistanceIcon" />
+                  <img src={dragon} alt="dragon" className="resistanceIcon" loading="lazy" />
                   <p className={piece.resistances.dragon < 0 && "negative"}>
                     {piece.resistances.dragon}
                   </p>

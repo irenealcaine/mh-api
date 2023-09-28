@@ -19,6 +19,7 @@ const Home = () => {
                 )}.png`,
               )}
               alt={homeItem.name}
+              loading="lazy"
             />
           </Link>
         ))}

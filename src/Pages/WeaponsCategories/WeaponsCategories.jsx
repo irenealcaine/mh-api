@@ -100,7 +100,7 @@ const WeaponsCategories = () => {
             className="weaponItem"
           >
             <h2>{category.name}</h2>
-            <img src={category.img} alt={category.name} />
+            <img src={category.img} alt={category.name} loading="lazy" />
           </Link>
         ))}
       </div>

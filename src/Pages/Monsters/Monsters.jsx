@@ -25,6 +25,7 @@ const Monsters = () => {
             src={require(`../../assets/images/monsters/${monster.id}.png`)}
             alt={monster.name}
             className="monsterImg"
+            loading="lazy"
           />
           <h3 className="name">{monster.name}</h3>
           <p className="specie">{monster.species}</p>

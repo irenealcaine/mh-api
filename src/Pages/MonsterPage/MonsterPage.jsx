@@ -34,6 +34,7 @@ const MonsterPage = () => {
         className="monsterImage"
         src={require(`../../assets/images/monsters/${monster.id}.png`)}
         alt={monster.name}
+        loading="lazy"
       />
     ) : null;
   };
@@ -67,6 +68,7 @@ const MonsterPage = () => {
                 src={icons[element]}
                 alt={element}
                 className="icon"
+                loading="lazy"
               />
             ))}
           </div>
@@ -85,6 +87,7 @@ const MonsterPage = () => {
                   src={icons[resistance.element]}
                   alt={resistance.element}
                   className="icon"
+                  loading="lazy"
                 />
               ))}
           </div>
@@ -109,6 +112,7 @@ const MonsterPage = () => {
                       src={icons[resistance.element]}
                       alt={resistance.element}
                       className="icon"
+                      loading="lazy"
                     />
                   ))}
               </div>
@@ -131,6 +135,7 @@ const MonsterPage = () => {
                     src={icons[weakness.element]}
                     alt={weakness.element}
                     className="icon"
+                    loading="lazy"
                   />
                   <div className="starsContainer">
                     {Array.from({ length: 3 }, (_, i) => (
@@ -169,6 +174,7 @@ const MonsterPage = () => {
                           src={icons[weakness.element]}
                           alt={weakness.element}
                           className="icon"
+                          loading="lazy"
                         />
                         <div className="starsContainer">
                           {Array.from({ length: 3 }, (_, i) => (

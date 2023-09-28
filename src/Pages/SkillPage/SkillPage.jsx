@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SkillPage.css";
+import Loader from "../../Components/Loader/Loader";
 
 const SkillPage = () => {
   const [skillData, setSkillData] = useState([]);
   const [armorData, setArmorData] = useState([]);
   const [ailmentData, setAilmentData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const { id } = useParams();
 
@@ -28,6 +31,11 @@ const SkillPage = () => {
           return false;
         });
         setArmorData(filteredArmorData);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
 
     fetch(`https://mhw-db.com/ailments`)
@@ -44,6 +52,13 @@ const SkillPage = () => {
         setAilmentData(filteredArmorData);
       });
   }, [id, skillData.id, skillData.name]);
+
+  const renderLoader = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+    return null;
+  };
 
   return (
     <div className="skillPage">
@@ -89,6 +104,9 @@ const SkillPage = () => {
           </div>
         </div>
       )}
+
+      {renderLoader()}
+
     </div>
   );
 };

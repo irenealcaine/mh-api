@@ -17,7 +17,7 @@ const Header = () => {
     <div className="header">
       <nav>
         <Link to={`/`}>
-          <img src={logo} className="logo" alt="logo" />
+          <img src={logo} className="logo" alt="logo" loading="lazy" />
         </Link>
 
         <ul className={`nav-links ${menuActiveClass}`}>
