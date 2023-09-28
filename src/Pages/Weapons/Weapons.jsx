@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Weapons.css";
 import Loader from "../../Components/Loader/Loader";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const Weapons = () => {
   const { slug } = useParams();
@@ -63,6 +64,8 @@ const Weapons = () => {
 
   return (
     <div className="weapons">
+      <BackButton to={"/weapons"} value={"All weapon categories"} />
+
       <h1>Weapons</h1>
       <div className="inputs">
         <input

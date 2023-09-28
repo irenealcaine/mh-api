@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./AilmentPage.css";
 import Loader from "../../Components/Loader/Loader";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const AilmentPage = () => {
   const [ailmentData, setAilmentData] = useState([]);
@@ -48,6 +49,8 @@ const AilmentPage = () => {
 
   return (
     <div className="ailmentPage">
+      <BackButton to={"/ailments"} value={"All ailments"} />
+
       <h1>{ailmentData.name}</h1>
       <p>{ailmentData.description}</p>
 

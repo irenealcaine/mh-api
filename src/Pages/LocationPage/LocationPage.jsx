@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./LocationPage.css";
+import BackButton from "../../Components/BackButton/BackButton";
 const LocationPage = () => {
   const [locationData, setLocationData] = useState([]);
   const [monsters, setMonsters] = useState([]);
@@ -45,6 +46,7 @@ const LocationPage = () => {
 
   return (
     <div className="locationPage">
+      <BackButton to={"/locations"} value={"All locations"} />
       <h1>{locationData.name}</h1>
       {renderLocationImage()}
       <ul className="camps">

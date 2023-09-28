@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ItemPage.css";
 import Loader from "../../Components/Loader/Loader";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const ItemPage = () => {
   const [itemData, setItemData] = useState([]);
@@ -196,7 +197,9 @@ const ItemPage = () => {
 
   return (
     <div className="itemPage">
+      <BackButton to={"/items"} value={"All items"} />
       <h1> {itemData.name}</h1>
+
       {
         !isLoading && (
           <div>

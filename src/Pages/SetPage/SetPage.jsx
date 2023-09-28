@@ -6,6 +6,7 @@ import water from "../../assets/images/icons/water.png";
 import ice from "../../assets/images/icons/ice.png";
 import thunder from "../../assets/images/icons/thunder.png";
 import dragon from "../../assets/images/icons/dragon.png";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const SetPage = () => {
   const [set, setSet] = useState([]);
@@ -22,6 +23,7 @@ const SetPage = () => {
 
   return (
     <div className="setPage">
+      <BackButton to={"/sets"} value={"All sets"} />
       <h1>{set.name} set</h1>
       <div className="rank">{set.rank} rank</div>
       <div className="setPieces">

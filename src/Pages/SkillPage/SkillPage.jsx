@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SkillPage.css";
 import Loader from "../../Components/Loader/Loader";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const SkillPage = () => {
   const [skillData, setSkillData] = useState([]);
@@ -62,6 +63,8 @@ const SkillPage = () => {
 
   return (
     <div className="skillPage">
+      <BackButton to={"/skills"} value={"All skills"} />
+
       <h1>{skillData?.name}</h1>
       <p>{skillData?.description}</p>
       <ul className="ranks">

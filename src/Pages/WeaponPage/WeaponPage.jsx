@@ -12,6 +12,7 @@ import sleepIcon from "../../assets/images/icons/sleep.png";
 import paralysisIcon from "../../assets/images/icons/paralysis.png";
 import stunIcon from "../../assets/images/icons/stun.png";
 import Loader from "../../Components/Loader/Loader";
+import BackButton from "../../Components/BackButton/BackButton";
 
 
 const WeaponPage = () => {
@@ -70,6 +71,8 @@ const WeaponPage = () => {
 
   return (
     <div className="weaponPage">
+      <BackButton to={`/weapon/${weapon.type}`} value={`All ${weapon.type}`} />
+
       <h1>{weapon.name}</h1>
       <img src={weapon?.assets?.image} alt={weapon.name} loading="lazy" />
       <h2>Rarity</h2>
