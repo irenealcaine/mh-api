@@ -54,36 +54,41 @@ const MonsterPage = () => {
   return (
     <div className="monsterPage">
       <h1>{monster.name}</h1>
-      <p>{monster.species}</p>
+      <p className="specie">{monster.species}</p>
       {renderMonsterImage()}
       <p>{monster.description}</p>
       {monster?.elements?.length >= 1 && (
         <div>
           <h2>Elements</h2>
-          {monster.elements.map((element, index) => (
-            <img
-              key={index}
-              src={icons[element]}
-              alt={element}
-              className="icon"
-            />
-          ))}
+          <div className="weaknesses">
+            {monster.elements.map((element, index) => (
+              <img
+                key={index}
+                src={icons[element]}
+                alt={element}
+                className="icon"
+              />
+            ))}
+          </div>
         </div>
       )}
 
       {monster?.resistances?.length >= 1 && (
         <div>
           <h2>Resistances</h2>
-          {monster.resistances
-            .filter((resistance) => resistance.condition === null)
-            .map((resistance, index) => (
-              <img
-                key={index}
-                src={icons[resistance.element]}
-                alt={resistance.element}
-                className="icon"
-              />
-            ))}
+          <div className="weaknesses">
+            {monster.resistances
+              .filter((resistance) => resistance.condition === null)
+              .map((resistance, index) => (
+                <img
+                  key={index}
+                  src={icons[resistance.element]}
+                  alt={resistance.element}
+                  className="icon"
+                />
+              ))}
+          </div>
+
           {monster.resistances
             .filter((resistance) => resistance.condition !== null)
             .slice(0, 1)
@@ -92,16 +97,18 @@ const MonsterPage = () => {
                 <h3>{resistance.condition}</h3>
               </div>
             ))}
-          {monster.resistances
-            .filter((resistance) => resistance.condition !== null)
-            .map((resistance, index) => (
-              <img
-                key={index}
-                src={icons[resistance.element]}
-                alt={resistance.element}
-                className="icon"
-              />
-            ))}
+          <div className="weaknesses">
+            {monster.resistances
+              .filter((resistance) => resistance.condition !== null)
+              .map((resistance, index) => (
+                <img
+                  key={index}
+                  src={icons[resistance.element]}
+                  alt={resistance.element}
+                  className="icon"
+                />
+              ))}
+          </div>
         </div>
       )}
 

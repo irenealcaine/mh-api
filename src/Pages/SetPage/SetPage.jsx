@@ -23,13 +23,13 @@ const SetPage = () => {
   return (
     <div className="setPage">
       <h1>{set.name} set</h1>
-      <div>{set.rank}</div>
+      <div className="rank">{set.rank} rank</div>
       <div className="setPieces">
         {set?.pieces &&
           set?.pieces?.map((piece, index) => (
             <div key={index} className="setPiece">
               <h2>{piece.name}</h2>
-              <p>{piece.type}</p>
+              <p className="rank">{piece.type}</p>
               {piece?.assets?.imageMale && (
                 <img
                   className="setPieceImg"

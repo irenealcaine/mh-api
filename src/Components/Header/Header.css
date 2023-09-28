@@ -6,17 +6,25 @@ nav {
 }
 
 .logo {
-  width: 40px;
+  width: 50px;
   margin: -10px;
 }
 
 ul {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   list-style: none;
 }
 ul li {
   text-transform: capitalize;
+  color: #502d00;
+  font-weight: 700;
+  font-size: 20px;
+  transition: all 0.2s ease;
+}
+
+ul li:hover {
+  text-decoration: underline;
 }
 
 .menu-toggle {
@@ -40,7 +48,7 @@ ul li {
     flex-direction: column;
     padding: 20px 80px;
     position: absolute;
-    top: 44px;
+    top: 53px;
     /* width: 100%; */
     right: 0;
     text-align: center;

@@ -109,9 +109,12 @@ const ItemPage = () => {
     <div className="itemPage">
       <h1> {itemData.name}</h1>
       <p> {itemData.description}</p>
-      <p>Value: {itemData.value}</p>
-      <p>Rarity: {itemData.rarity}</p>
-      <p>Carry limit: {itemData.carryLimit}</p>
+      <h2>Value</h2>
+      <p>{itemData.value}</p>
+      <h2>Rarity</h2>
+      <p>{itemData.rarity}</p>
+      <h2>Carry limit</h2>
+      <p>{itemData.carryLimit}</p>
 
       {monsters.length >= 1 && (
         <div>

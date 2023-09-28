@@ -1,3 +1,6 @@
+.specie {
+  text-transform: capitalize;
+}
 .monsterImage {
   width: 100%;
   max-width: 400px;
@@ -34,7 +37,11 @@
   align-items: center;
   gap: 2px;
 }
+.monsterPage h2 {
+  margin-top: 15px;
+}
 
 .monsterPage h3 {
   text-transform: capitalize;
+  margin-top: 5px;
 }

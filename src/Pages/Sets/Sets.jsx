@@ -172,6 +172,18 @@ const Sets = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
+
+        <select
+          className="input"
+          onChange={(e) => setSelectValue(e.target.value)}
+          value={selectValue || ""}
+        >
+          <option value={""}>Rank</option>
+          <option value={"low"}>Low</option>
+          <option value={"high"}>High</option>
+          <option value={"master"}>Master</option>
+        </select>
+
         <div className="input">
           <p>Defense</p>
           <input
@@ -185,17 +197,6 @@ const Sets = () => {
           />
           <p>{rangeValue}</p>
         </div>
-
-        <select
-          className="input"
-          onChange={(e) => setSelectValue(e.target.value)}
-          value={selectValue || ""}
-        >
-          <option value={""}>Rank</option>
-          <option value={"low"}>Low</option>
-          <option value={"high"}>High</option>
-          <option value={"master"}>Master</option>
-        </select>
       </div>
 
       <div className="pagesNumber">

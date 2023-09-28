@@ -1,3 +1,6 @@
+.rank {
+  text-transform: capitalize;
+}
 .setPieces {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -28,7 +31,6 @@
 }
 
 .setMaterialItem {
-
 }
 
 @media screen and (max-width: 1000px) {
