@@ -166,6 +166,7 @@ const Sets = () => {
       <h1>Sets</h1>
       <div className="inputs">
         <input
+          placeholder="Search"
           className="input"
           type="text"
           value={inputValue}

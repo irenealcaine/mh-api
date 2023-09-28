@@ -20,6 +20,7 @@ const Items = () => {
       <h1>Items</h1>
       <div className="inputs">
         <input
+          placeholder="Search"
           className="input"
           type="text"
           value={inputValue}

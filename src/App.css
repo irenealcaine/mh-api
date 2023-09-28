@@ -72,8 +72,7 @@ h1 {
 }
 
 input[type="text"],
-select,
-option {
+select {
   background-color: transparent;
   border: 1px solid white;
   padding: 5px 10px;
@@ -86,9 +85,30 @@ select:focus {
   outline: none;
 }
 
+select * {
+  background-color: #ffdcac;
+  padding: 5px 10px;
+}
+
+input[type="range"] {
+  appearance: none;
+  background: #ffe7c5;
+  height: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background-color: #683d00;
+  height: 20px;
+  width: 3px;
+  border-radius: 100px;
+  box-shadow: 0 0 0 3px #683d0033;
+}
+
 @media screen and (max-width: 768px) {
   .inputs {
     flex-direction: column;
+    gap: 15px;
   }
   .input {
     width: 100%;

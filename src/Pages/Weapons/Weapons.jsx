@@ -66,6 +66,7 @@ const Weapons = () => {
       <h1>Weapons</h1>
       <div className="inputs">
         <input
+          placeholder="Search"
           className="input"
           type="text"
           value={inputValue}
