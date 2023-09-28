@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  /* grid-auto-rows: minmax(100px, auto); */
 }
 
 .card {
@@ -57,5 +57,6 @@
 @media screen and (max-width: 768px) {
   .monsters {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0;
   }
 }
