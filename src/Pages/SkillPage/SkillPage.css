@@ -1,0 +1,12 @@
+.skillPage .ranks {
+  list-style: none;
+  padding: 20px;
+}
+
+.skillPage .ranks .rank {
+  margin-bottom: 5px;
+}
+
+.skillPage .ranks .rank span {
+  font-weight: 700;
+}

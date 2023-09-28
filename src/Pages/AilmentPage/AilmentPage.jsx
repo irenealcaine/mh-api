@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./AilmentPage.css";
 
 const AilmentPage = () => {
   const [ailmentData, setAilmentData] = useState([]);
