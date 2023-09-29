@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.weaponPage p {
+.weaponPage .damageType {
   text-transform: capitalize;
 }
 
