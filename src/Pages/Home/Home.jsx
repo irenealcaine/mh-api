@@ -5,7 +5,7 @@ import { homeItems } from "../../Utils/Constants";
 const Home = () => {
   return (
     <div className="home">
-      <h1>Monster Hunter Api</h1>
+      <h1>Monster Hunter Database</h1>
 
       <div className="homeContainer">
         {homeItems.map((homeItem, index) => (
