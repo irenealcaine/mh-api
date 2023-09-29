@@ -80,7 +80,7 @@ const WeaponPage = () => {
       <h2>Damage</h2>
       <p>{weapon?.attack?.display}</p>
       <h2>Damage type</h2>
-      <p>{weapon.damageType}</p>
+      <p className="damageType">{weapon.damageType}</p>
       {weapon?.elements?.length >= 1 && (
         <div>
           <h2>Element damage</h2>
