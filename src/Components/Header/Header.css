@@ -18,9 +18,34 @@ nav {
 .header ul li {
   text-transform: capitalize;
   color: #502d00;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-size: 20px;
   transition: all 0.2s ease;
+}
+
+.header ul .active {
+  font-weight: bolder;
+  position: relative;
+}
+
+.header ul .active::before {
+  content: "";
+  width: 2px;
+  background-color: #502d00;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -7px;
+}
+
+.header ul .active::after {
+  content: "";
+  width: 2px;
+  background-color: #502d00;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -7px;
 }
 
 .header ul li:hover {
@@ -48,15 +73,14 @@ nav {
     flex-direction: column;
     padding: 20px 80px;
     position: absolute;
-    top: 53px;
+    top: 63px;
     /* width: 100%; */
-    right: 0;
+    right: 10px;
     text-align: center;
     z-index: 10;
     background: #ffbd60f1;
-    border-bottom-left-radius: 20px;
-    border-bottom: 1px solid #ffd7a2;
-    border-left: 1px solid #ffd7a2;
+    border-radius: 20px;
+    border: 1px solid #ffd7a2;
   }
 
   .menu-toggle {
