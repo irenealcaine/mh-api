@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/images/monsters/36.png";
 import "./Header.css";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -8,6 +8,7 @@ import { homeItems } from "../../Utils/Constants";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuActiveClass = isMenuOpen ? "active" : "";
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,7 +28,13 @@ const Header = () => {
               to={`/${homeItem.name}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              <li>{homeItem.name}</li>
+              <li
+                className={`${
+                  location.pathname === `/${homeItem.name}` && "active"
+                }`}
+              >
+                {homeItem.name}
+              </li>
             </Link>
           ))}
         </ul>
